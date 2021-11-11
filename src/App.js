@@ -8,11 +8,6 @@ import themeFile from './util/theme';
 import jwtDecode from 'jwt-decode';
 import AuthRoute from './util/AuthRoute';
 
-//REDUX
-import { Provider } from 'react-redux';
-import store from './redux/store';
-
-
 //Components
 import Navbar from './components/Navbar';
 
@@ -43,7 +38,6 @@ const token = localStorage.FBIdToken;
 function App() {
   return (
     <MuiThemeProvider theme={theme}>
-    <Provider store={store}>
       <div className="App">
         <Router>
           <Navbar/>
@@ -61,7 +55,6 @@ function App() {
           </div>
         </Router>
       </div>
-      </Provider>
     </MuiThemeProvider>
   );
 }
