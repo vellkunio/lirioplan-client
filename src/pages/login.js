@@ -9,7 +9,6 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { Grid } from '@material-ui/core';
 import CircularProgress from '@mui/material/CircularProgress';
-import theme from '../util/theme';
 
 const styles = (theme) => ({
     ...theme.authPalette
