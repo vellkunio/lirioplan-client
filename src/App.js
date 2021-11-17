@@ -22,6 +22,7 @@ import finance from './pages/finance';
 
 const theme = createTheme(themeFile);
 
+//check if token isn't expired after 90 mins or so
 let authenticated;
 const token = localStorage.FBIdToken;
   if(token){
@@ -29,6 +30,7 @@ const token = localStorage.FBIdToken;
     if(decodedToken.exp * 1000 < Date.now()){
       window.location.href = '/login'
       authenticated = false;
+      window.localStorage.removeItem('FBIdToken'); //MAYBE DELETE IT. MADE TO REMOVE TOKEN FROM LOCAL STORAGE AFTER IT HAS EXPIRED
     } else {
       authenticated = true;
     }
