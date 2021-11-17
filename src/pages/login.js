@@ -30,6 +30,7 @@ class login extends Component {
     
     handleSubmit = (event) => {
         event.preventDefault();
+        
         this.setState({
             loading: true
         })
@@ -55,7 +56,7 @@ class login extends Component {
             });
         });
 
-    };
+    }
 
 
 
@@ -84,6 +85,8 @@ class login extends Component {
                     <Typography variant="h2" className={classes.pageTitle}>
                         Login
                     </Typography>
+
+                    {/* FIX ERRORS.SMTH */}
 
                     <form noValidate onSubmit={this.handleSubmit}>
                         <TextField id="email" name="email" type="email" label="Email" className={classes.TextField}
