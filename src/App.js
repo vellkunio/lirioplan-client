@@ -19,9 +19,13 @@ import projects from './pages/projects';
 import materials from './pages/materials';
 import finance from './pages/finance';
 
+//REDUX
+import { Provider } from 'react-redux';
+import store from './redux/store';
 
 const theme = createTheme(themeFile);
 
+//check if token isn't expired after 90 mins or so
 let authenticated;
 const token = localStorage.FBIdToken;
   if(token){
@@ -29,6 +33,7 @@ const token = localStorage.FBIdToken;
     if(decodedToken.exp * 1000 < Date.now()){
       window.location.href = '/login'
       authenticated = false;
+      window.localStorage.removeItem('FBIdToken'); //MAYBE DELETE IT. MADE TO REMOVE TOKEN FROM LOCAL STORAGE AFTER IT HAS EXPIRED
     } else {
       authenticated = true;
     }
@@ -38,23 +43,23 @@ const token = localStorage.FBIdToken;
 function App() {
   return (
     <MuiThemeProvider theme={theme}>
-      <div className="App">
+      <Provider store={store}>
         <Router>
           <Navbar/>
           <div style={{marginTop: '80px'}}>
-      <Container maxWidth="sm">
-          <Switch>
-            <Route exact path="/" component={home}/>
-            <AuthRoute exact path="/login" component={login} authenticated={authenticated}/>
-            <AuthRoute exact path="/signup" component={signup} authenticated={authenticated}/>
-            <Route exact path="/projects" component={projects}/>
-            <Route exact path="/materials" component={materials}/>
-            <Route exact path="/finance" component={finance}/>
-          </Switch>
-        </Container>
+            <Container maxWidth="sm">
+              <Switch>
+                <Route exact path="/" component={home}/>
+                <AuthRoute exact path="/login" component={login} authenticated={authenticated}/>
+                <AuthRoute exact path="/signup" component={signup} authenticated={authenticated}/>
+                <Route exact path="/projects" component={projects}/>
+                <Route exact path="/materials" component={materials}/>
+                <Route exact path="/finance" component={finance}/>
+              </Switch>
+            </Container>
           </div>
         </Router>
-      </div>
+      </Provider>
     </MuiThemeProvider>
   );
 }

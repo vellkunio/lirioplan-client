@@ -5,10 +5,14 @@ import AppIcon from '../images/avatar.png';
 import { Typography } from '@material-ui/core';
 import { TextField } from '@material-ui/core';
 import { Button } from '@material-ui/core';
-import axios from 'axios';
+// import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { Grid } from '@material-ui/core';
 import CircularProgress from '@mui/material/CircularProgress';
+
+//redux stuff
+import { connect } from 'react-redux';
+import { loginUser } from '../redux/actions/userActions';
 
 const styles = (theme) => ({
     ...theme.authPalette
@@ -23,39 +27,26 @@ class login extends Component {
         this.state ={
             email: '',
             password: '',
-            loading: false,
             errors: {}
         }
     }
-    
+
+    //Change to: 
+    //UNSAFE_componentWillReceiveProps(nextProps){
+    componentWillReceiveProps(nextProps){
+        if(nextProps.UI.errors){
+            this.setState({ errors: nextProps.UI.errors });
+        }
+    }
+
     handleSubmit = (event) => {
         event.preventDefault();
-        this.setState({
-            loading: true
-        })
-        
         const userData = {
             email: this.state.email,
             password: this.state.password
         };
-
-        axios.post('/login', userData)
-        .then(res => {
-            console.log(res.data);
-            this.setState({
-                loading: false
-            });
-            localStorage.setItem('FBIdToken', `Bearer ${res.data.token}`);
-            this.props.history.push('/');
-        })
-        .catch(err => {
-            this.setState({
-                errors: err.response.data,
-                loading: false
-            });
-        });
-
-    };
+        this.props.loginUser(userData, this.props.history);
+    }
 
 
 
@@ -68,8 +59,8 @@ class login extends Component {
 
     render() {
 
-        const { classes } = this.props;
-        const { errors, loading } = this.state;
+        const { classes, UI: { loading } } = this.props;
+        const { errors } = this.state;
 
         return (
             <Grid container 
@@ -84,6 +75,8 @@ class login extends Component {
                     <Typography variant="h2" className={classes.pageTitle}>
                         Login
                     </Typography>
+
+                    {/* FIX ERRORS.SMTH */}
 
                     <form noValidate onSubmit={this.handleSubmit}>
                         <TextField id="email" name="email" type="email" label="Email" className={classes.TextField}
@@ -117,7 +110,20 @@ class login extends Component {
 }
 
 login.propTypes = {
-    classes: PropTypes.object.isRequired
+    classes: PropTypes.object.isRequired,
+    loginUser: PropTypes.func.isRequired,
+    user: PropTypes.object.isRequired,
+    UI: PropTypes.object.isRequired
+
+};
+
+const mapStateToProps = (state) => ({
+    user: state.user,
+    UI: state.UI
+})
+
+const mapActionsToProps = {
+    loginUser
 }
 
-export default withStyles(styles)(login);
+export default connect(mapStateToProps, mapActionsToProps)(withStyles(styles)(login));

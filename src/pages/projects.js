@@ -3,6 +3,9 @@ import React, { Component } from 'react';
 
 import Project from '../components/Project';
 
+//TODO
+//Convert the whole project form into the form to send the update function on the Edit button
+
 class projects extends Component {
     state = {
         projects: null
