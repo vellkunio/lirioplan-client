@@ -3,11 +3,10 @@ export default {
       primary: {
         main: '#045658',
         dark: '#03161d',
-        light: '47802b'
       },
       secondary: {
-        main: '#ef6101',
-        light: '#fdac07'
+        main: '#fdac07',
+        light: '#ef6101'
       },
     },
     authPalette:{

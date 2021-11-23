@@ -77,7 +77,7 @@ class Project extends Component {
             size: this.state.size
         }
 
-        axios.post(`/editProject/${this.state.projectId}`, localStorage.FBIdToken ,projectData)
+        axios.post(`/editProject/${this.state.projectId}`, projectData)
         .then((res) => {
             this.setState({
                 isEditing: !this.state.isEditing
@@ -118,6 +118,8 @@ class Project extends Component {
         } else {
             isStartedString = 'Not started';
         }
+
+        //ADD PLACEHOLDERS FOR ALL INPUTS
 
         return (
             <div>
@@ -266,6 +268,7 @@ class Project extends Component {
                                 </CardContent>
                                 <CardActions>
                                     <Button type="submit" size="small">Done</Button>
+                                    <Button type="button" size="small" onClick={this.changeEditingState}>Cancel</Button>
                                 </CardActions>
                             </form>
                         </Card>
