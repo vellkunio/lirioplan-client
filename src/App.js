@@ -7,6 +7,7 @@ import Container from '@mui/material/Container';
 import themeFile from './util/theme';
 import jwtDecode from 'jwt-decode';
 import AuthRoute from './util/AuthRoute';
+import axios from 'axios';
 
 //Components
 import Navbar from './components/Navbar';
@@ -22,20 +23,21 @@ import finance from './pages/finance';
 //REDUX
 import { Provider } from 'react-redux';
 import store from './redux/store';
+import { SET_AUTHENTICATED } from './redux/types';
+import { logoutUser, getUserData } from './redux/actions/userActions';
 
 const theme = createTheme(themeFile);
 
-//check if token isn't expired after 90 mins or so
-let authenticated;
 const token = localStorage.FBIdToken;
   if(token){
     const decodedToken = jwtDecode(token);
     if(decodedToken.exp * 1000 < Date.now()){
-      window.location.href = '/login'
-      authenticated = false;
-      window.localStorage.removeItem('FBIdToken'); //MAYBE DELETE IT. MADE TO REMOVE TOKEN FROM LOCAL STORAGE AFTER IT HAS EXPIRED
+      store.dispatch(logoutUser());
+      window.location.href = '/login';
     } else {
-      authenticated = true;
+      store.dispatch({ type: SET_AUTHENTICATED });
+      axios.defaults.headers.common['Authorization'] = token;
+      store.dispatch(getUserData());
     }
   }
 
@@ -50,8 +52,8 @@ function App() {
             <Container maxWidth="sm">
               <Switch>
                 <Route exact path="/" component={home}/>
-                <AuthRoute exact path="/login" component={login} authenticated={authenticated}/>
-                <AuthRoute exact path="/signup" component={signup} authenticated={authenticated}/>
+                <AuthRoute exact path="/login" component={login}/>
+                <AuthRoute exact path="/signup" component={signup}/>
                 <Route exact path="/projects" component={projects}/>
                 <Route exact path="/materials" component={materials}/>
                 <Route exact path="/finance" component={finance}/>

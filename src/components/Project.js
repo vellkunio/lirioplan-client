@@ -23,11 +23,6 @@ const styles = {
     }
 }
 
-
-
-
-
-
 class Project extends Component {
 
     constructor(props){
