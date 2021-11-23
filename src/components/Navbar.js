@@ -23,8 +23,7 @@ import Button from '@material-ui/core/Button';
 //     ...theme.palette
 // });
 
-//TODO
-//IMPLEMENT MATERIAL-UI STYLES TO ADD SECONDARY COLOR TO ICONS
+
 class Navbar extends Component {
 
     handleLogout= () => {

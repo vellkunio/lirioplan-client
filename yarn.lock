@@ -12826,6 +12826,11 @@
   dependencies:
     "isexe" "^2.0.0"
 
+"with-router@^1.0.1":
+  "integrity" "sha512-Jc/rG+uhJ9iqRWJjQAB9kKQiwk+L35p9OsXqDJU/n/BoFEsgEQLcXzYZ/MS4jsnXsjYs07C/hQhsSZSUir85NA=="
+  "resolved" "https://registry.npmjs.org/with-router/-/with-router-1.0.1.tgz"
+  "version" "1.0.1"
+
 "word-wrap@^1.2.3", "word-wrap@~1.2.3":
   "integrity" "sha512-Hz/mrNwitNRh/HUAtM/VT/5VH+ygD6DV7mYKZAtHOrbs8U7lvPS6xf7EJKMF0uW1KJCl0H701g3ZGus+muE5vQ=="
   "resolved" "https://registry.npmjs.org/word-wrap/-/word-wrap-1.2.3.tgz"
