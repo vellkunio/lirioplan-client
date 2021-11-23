@@ -8,6 +8,7 @@ import themeFile from './util/theme';
 import jwtDecode from 'jwt-decode';
 import AuthRoute from './util/AuthRoute';
 import axios from 'axios';
+import PrivateRoute from './util/PrivateRoute';
 
 //Components
 import Navbar from './components/Navbar';
@@ -54,9 +55,9 @@ function App() {
                 <Route exact path="/" component={home}/>
                 <AuthRoute exact path="/login" component={login}/>
                 <AuthRoute exact path="/signup" component={signup}/>
-                <Route exact path="/projects" component={projects}/>
-                <Route exact path="/materials" component={materials}/>
-                <Route exact path="/finance" component={finance}/>
+                <PrivateRoute exact path="/projects" component={projects}/>
+                <PrivateRoute exact path="/materials" component={materials}/>
+                <PrivateRoute exact path="/finance" component={finance}/>
               </Switch>
             </Container>
           </div>
