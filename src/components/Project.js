@@ -13,7 +13,8 @@ import InputAdornment from '@mui/material/InputAdornment';
 import Checkbox from '@mui/material/Checkbox';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
-
+import CircularProgress from '@mui/material/CircularProgress';
+import LinearProgress from '@mui/material/LinearProgress';
 
 
 const styles = {
@@ -38,11 +39,11 @@ class Project extends Component {
             room: props.project.room,
             size: props.project.size,
             errors: {},
+            loading: false,
             isEditing: false,
             projectId: props.project.projectId
         }
     }
-
 
 
     handleChange = (event) => {
@@ -63,8 +64,15 @@ class Project extends Component {
         })
     }
 
+    // refreshPage = ()=>{
+    //     window.location.reload();
+    //  }
+
     handleSubmit = (event) => {
         event.preventDefault();
+        this.setState({
+            loading: true
+        });
         const projectData = {
             bossCompany: this.state.bossCompany,
             address: this.state.address,
@@ -80,19 +88,33 @@ class Project extends Component {
         axios.post(`/editProject/${this.state.projectId}`, projectData)
         .then((res) => {
             this.setState({
-                isEditing: !this.state.isEditing
+                isEditing: !this.state.isEditing,
+                loading: false
             })
         })
-        .catch(err => console.log(err));
+        .then(()=>{
+            window.location.reload();
+        })
+        
+        // .catch(err => console.log(err));
+        .catch((err) => {
+            this.setState({
+                errors: err.response.data,
+                loading: false
+            })
+        })
     }
 
+    
 
 
 
     render() {
         // const classes = this.props.classes; // same as const { Classes } = this.props;
-        const {classes, project: { projectId, bossCompany, address, createdAt, isFinished, isFullyPaid, isStarted, makeMoney, spendMoney, room, size, userHandle } } = this.props;
-        
+        const {classes, project: {
+             projectId, bossCompany, address, createdAt, isFinished, isFullyPaid, isStarted,
+              makeMoney, spendMoney, room, size, userHandle } } = this.props;
+        const { errors, loading } = this.state;
 
         //TODO
 
@@ -185,7 +207,7 @@ class Project extends Component {
 
                                 </CardContent>
                                 <CardActions>
-                                    <Button type="button" size="small" onClick={this.changeEditingState}>Edit</Button>
+                                    <Button type="button" size="small" variant="outlined" color="warning" onClick={this.changeEditingState}>Edit</Button>
                                 </CardActions>
                         </Card>
                     </div>
@@ -193,86 +215,109 @@ class Project extends Component {
 
                 {/* To show input fields */}
                 {this.state.isEditing && 
-                    <div>
-                        <Card className={classes.card}>
-                            <form noValidate onSubmit={this.handleSubmit}>
-                                <CardContent>
-                                    {/* Project for *Name of the company* */}
-                                    <TextField id="bossCompanyInput" name="bossCompany" label="Work for" variant="standard" size="small" 
-                                        onChange={this.handleChange} value={this.state.bossCompany} fullWidth 
-                                    />
+                <div>
+                <Card className={classes.card}>
+                    <form noValidate onSubmit={this.handleSubmit}>
+                        <CardContent>
+                            {/* loading circle */}
+                            {/* {loading && (
+                                <CircularProgress style={{marginLeft: "20px", position: 'absolute', marginTop: "150px"}} size={200}/>
+                            )} */}
+                            {/* Project for *Name of the company* */}
+                            <TextField id="bossCompanyInput" name="bossCompany" label="Work for" variant="standard" size="small" 
+                                onChange={this.handleChange} value={this.state.bossCompany} placeholder={bossCompany}
+                                style={{marginBottom: '20px'}} fullWidth 
+                            />
 
-                                    {/* Address: *address* */}
-                                    <TextField id="address" name="address" label="Address" variant="standard" size="small" 
-                                        onChange={this.handleChange} value={this.state.address} fullWidth 
-                                    />
+                            {/* Address: *address* */}
+                            <TextField id="address" name="address" label="Address" variant="standard" size="small" 
+                                onChange={this.handleChange} value={this.state.address} placeholder={address}
+                                style={{marginBottom: '20px'}} fullWidth 
+                            />
 
-                                    {/* Value of the project: *makeMoney* */}
-                                    <TextField id="makeMoney" name="makeMoney" label="Income from the project" variant="standard" type="number" size="small" 
-                                         onChange={this.handleChange} value={this.state.makeMoney} fullWidth
-                                    />
+                            {/* Value of the project: *makeMoney* */}
+                            <TextField id="makeMoney" name="makeMoney" label="Income from the project" variant="standard" type="number" size="small" 
+                                    onChange={this.handleChange} value={this.state.makeMoney} placeholder={makeMoney}
+                                    style={{marginBottom: '20px'}} fullWidth
+                                    InputProps={{
+                                    startAdornment: <InputAdornment position="start">$</InputAdornment>,
+                                    }}
+                            />
 
-                                    {/* Expences for the project *spendMoney* */}
-                                    <TextField id="margin-normal" name="spendMoney" label="Cost of project" variant="standard" type="number" size="small" 
-                                         onChange={this.handleChange} value={this.state.spendMoney} fullWidth
-                                    />
+                            {/* Expences for the project *spendMoney* */}
+                            <TextField id="margin-normal" name="spendMoney" label="Cost of project" variant="standard" type="number" size="small" 
+                                    onChange={this.handleChange} value={this.state.spendMoney} placeholder={spendMoney}
+                                    style={{marginBottom: '20px'}} fullWidth
+                                    InputProps={{
+                                    startAdornment: <InputAdornment position="start">$</InputAdornment>,
+                                    }}
+                            />
 
-                                    {/* Size: *size* SqFt */}
-                                    <TextField id="margin-normal" name="size" label="Size" variant="standard" type="number" size="small" 
-                                         onChange={this.handleChange} value={this.state.size} fullWidth
-                                         InputProps={{
-                                            startAdornment: <InputAdornment position="start">sqft</InputAdornment>,
-                                          }}
-                                    />
+                            {/* Size: *size* SqFt */}
+                            <TextField id="margin-normal" name="size" label="Size" variant="standard" type="number" size="small" 
+                                    onChange={this.handleChange} value={this.state.size} placeholder={size}
+                                    style={{marginBottom: '20px'}} fullWidth
+                                    InputProps={{
+                                    startAdornment: <InputAdornment position="start">sqft</InputAdornment>,
+                                    }}
+                            />
 
-                                    {/* Room: *room* */}
-                                    <TextField id="room" name="room" label="Room" variant="standard" size="small" 
-                                         onChange={this.handleChange} value={this.state.room} fullWidth
-                                    />
-                                    
-                                    {/* Checkboxes */}
+                            {/* Room: *room* */}
+                            <TextField id="room" name="room" label="Room" variant="standard" size="small" 
+                                    onChange={this.handleChange} value={this.state.room} placeholder={room}
+                                    style={{marginBottom: '20px'}} fullWidth
+                            />
+                            
+                            {/* Checkboxes */}
 
-                                    <FormGroup>
-                                        <FormControlLabel control={
-                                        <Checkbox
-                                            name="isStarted"
-                                            checked={this.state.isStarted}
-                                            onChange={this.handleChangeCheck}
-                                          />} label="Started" />
+                            <FormGroup>
+                                <FormControlLabel control={
+                                <Checkbox
+                                    name="isStarted"
+                                    checked={this.state.isStarted}
+                                    onChange={this.handleChangeCheck}
+                                    />} label="Started" />
 
-                                        <FormControlLabel control={
-                                        <Checkbox
-                                            name="isFinished"
-                                            checked={this.state.isFinished}
-                                            onChange={this.handleChangeCheck}
-                                         />} label="Finished" />
+                                <FormControlLabel control={
+                                <Checkbox
+                                    name="isFinished"
+                                    checked={this.state.isFinished}
+                                    onChange={this.handleChangeCheck}
+                                    />} label="Finished" />
 
-                                         <FormControlLabel control={
-                                        <Checkbox
-                                            name="isFullyPaid"
-                                            checked={this.state.isFullyPaid}
-                                            onChange={this.handleChangeCheck}
-                                         />} label="Paid" />
-                                    </FormGroup>
+                                    <FormControlLabel control={
+                                <Checkbox
+                                    name="isFullyPaid"
+                                    checked={this.state.isFullyPaid}
+                                    onChange={this.handleChangeCheck}
+                                    />} label="Paid" />
+                            </FormGroup>
 
-                                    {/* TEST */}
-                                    <Typography variant="body1" component="div">
-                                        {projectId}
-                                    </Typography>
+                            {/* TEST */}
+                            <Typography variant="body1" component="div">
+                                {projectId}
+                            </Typography>
 
-                                    {/* Project created *createdAt* by *userHandle* */}
-                                    <Typography variant="body1" component="div">
-                                    Project created by {userHandle} was added {createdAt.toString().substring(0,10)}
-                                    </Typography>
-
-                                </CardContent>
-                                <CardActions>
-                                    <Button type="submit" size="small">Done</Button>
-                                    <Button type="button" size="small" onClick={this.changeEditingState}>Cancel</Button>
-                                </CardActions>
-                            </form>
-                        </Card>
-                    </div>
+                            {/* Project created *createdAt* by *userHandle* */}
+                            <Typography variant="body1" component="div">
+                            Project created by {userHandle} was added {createdAt.toString().substring(0,10)}
+                            </Typography>
+                            {/* IF ERRORS */}
+                            <Typography variant="subtitle2" component="div" align="center" style={{color: "red"}}>
+                                {errors.general}
+                            </Typography>
+                            {loading && (
+                                <LinearProgress />
+                            )}
+                        </CardContent>
+                        <CardActions>
+                            <Button type="submit" size="small" variant="outlined" color="success" disabled={loading}>Done</Button>
+                            <Button type="button" size="small" variant="outlined" color="warning" disabled={loading} onClick={this.changeEditingState}>Cancel</Button>
+                            
+                        </CardActions>
+                    </form>
+                </Card>
+                </div>
                 }
 
             </div>
