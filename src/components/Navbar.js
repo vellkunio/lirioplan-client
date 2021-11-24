@@ -19,7 +19,6 @@ import { logoutUser } from '../redux/actions/userActions';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
-import { fontSize } from '@mui/system';
 
 // const styles = (theme) => ({
 //     ...theme.palette
@@ -34,7 +33,7 @@ class Navbar extends Component {
 
 
     render() {
-        const { authenticated, match, location, history } = this.props;
+        const { authenticated, location } = this.props;
 
         return (
             <AppBar>
