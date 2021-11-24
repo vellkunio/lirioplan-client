@@ -10,6 +10,7 @@ import CategoryIcon from '@mui/icons-material/Category';
 import PaidIcon from '@mui/icons-material/Paid';
 import LogoutIcon from '@mui/icons-material/Logout';
 // import { withStyles } from '@material-ui/styles';
+import { withRouter } from 'react-router'
 
 import { logoutUser } from '../redux/actions/userActions';
 
@@ -18,6 +19,7 @@ import { logoutUser } from '../redux/actions/userActions';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
+import { fontSize } from '@mui/system';
 
 // const styles = (theme) => ({
 //     ...theme.palette
@@ -30,38 +32,41 @@ class Navbar extends Component {
         this.props.logoutUser();
     }
 
+
     render() {
-        const { authenticated } = this.props;
+        const { authenticated, match, location, history } = this.props;
+
         return (
             <AppBar>
                 <Toolbar className="nav-container">
                     {authenticated ? (
                         <Fragment>
+                            {/* {location.pathname} DELETE LATER */}
                             <MyButton tip="Create a project!">
-                                <CreateNewFolderIcon/>
+                                <CreateNewFolderIcon fontSize="large"/>
                             </MyButton>
                             <Link to="/">
-                            <MyButton tip="Home">
-                                <HomeIcon/>
+                            <MyButton tip="Home" >
+                                <HomeIcon fontSize="large" style={location.pathname === '/' ? {color:'#e9e8ed'} : {color:'#9d98a0'}}/>
                             </MyButton>
                             </Link>
                             <Link to="/projects">
                             <MyButton tip="Projects">
-                                <FolderIcon/>
+                                <FolderIcon fontSize="large" style={location.pathname === '/projects' ? {color:'#e9e8ed'} : {color:'#9d98a0'}}/>
                             </MyButton>
                             </Link>
                             <Link to="/materials">
                             <MyButton tip="Materials">
-                                <CategoryIcon/>
+                                <CategoryIcon fontSize="large" style={location.pathname === '/materials' ? {color:'#e9e8ed'} : {color:'#9d98a0'}}/>
                             </MyButton>
                             </Link>
                             <Link to="/finance">
                             <MyButton tip="Finance">
-                                <PaidIcon/>
+                                <PaidIcon fontSize="large" style={location.pathname === '/finance' ? {color:'#e9e8ed'} : {color:'#9d98a0'}}/>
                             </MyButton>
                             </Link>
                             <MyButton tip="Logout" onClick={this.handleLogout}>
-                                <LogoutIcon/>
+                                <LogoutIcon style={{color: '#202111'}}/>
                             </MyButton>
 
                             
@@ -70,9 +75,7 @@ class Navbar extends Component {
                         <Fragment>
                         <Button color="inherit" component={Link} to="/login">Login</Button>
                         <Button color="inherit" component={Link} to="/signup">Signup</Button>
-                        {/* <Button color="inherit" component={Link} to="/projects">Projects</Button>
-                        <Button color="inherit" component={Link} to="/materials">Materials</Button>
-                        <Button color="inherit" component={Link} to="/finance">Finance</Button> */}
+                        
                         </Fragment>
                     )}
                 </Toolbar>
@@ -92,5 +95,5 @@ const mapStateToProps = (state) => ({
     user: state.user
 })
 
-export default connect(mapStateToProps, { logoutUser })(Navbar);
+export default withRouter(connect(mapStateToProps, { logoutUser })(Navbar));
 // export default connect(mapStateToProps)(withStyles(styles)(Navbar));
