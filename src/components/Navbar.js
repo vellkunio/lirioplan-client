@@ -13,6 +13,7 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import { withRouter } from 'react-router'
 
 import { logoutUser } from '../redux/actions/userActions';
+import CreateProject from './CreateProject';
 
 
 //MUI stuff
@@ -41,9 +42,10 @@ class Navbar extends Component {
                     {authenticated ? (
                         <Fragment>
                             {/* {location.pathname} DELETE LATER */}
-                            <MyButton tip="Create a project!">
+                            {/* <MyButton tip="Create a project!">
                                 <CreateNewFolderIcon fontSize="large"/>
-                            </MyButton>
+                            </MyButton> */}
+                            <CreateProject />
                             <Link to="/">
                             <MyButton tip="Home" >
                                 <HomeIcon fontSize="large" style={location.pathname === '/' ? {color:'#e9e8ed'} : {color:'#9d98a0'}}/>
