@@ -50,7 +50,8 @@ function App() {
         <Router>
           <Navbar/>
           <div style={{marginTop: '80px'}}>
-            <Container maxWidth="sm">
+            <Container>
+            {/* maxWidth="sm" */}
               <Switch>
                 <Route exact path="/" component={home}/>
                 <AuthRoute exact path="/login" component={login}/>
