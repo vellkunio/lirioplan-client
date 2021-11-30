@@ -121,6 +121,11 @@ export class CreateProject extends Component {
 
 
     render() {
+
+        const {
+            user: { credentials: {isAdmin}}
+        } = this.props;
+
         return (
             <Fragment>
             <MyButton tip="Add new project" onClick={this.dialogToOpenState}>
@@ -261,16 +266,23 @@ export class CreateProject extends Component {
                     onChange={this.handleChangeCheck}
                     />} label="Paid" />
             </FormGroup>
+
+            {/* LOADING LINE */}
             {this.state.loading && (
                 <LinearProgress />
             )}
+            {/* IF ERRORS */}
+            <Typography variant="subtitle2" component="div" align="center" style={{color: "red"}}>
+                {this.state.errors.general}
+            </Typography>
+
             <Button 
             type="submit" 
             size="small" 
             variant="outlined" 
             color="success" 
             style={{marginTop: "25px"}}
-            disabled={this.state.loading}
+            disabled={this.state.loading || !isAdmin}
             >
             <Typography variant="subtitle2">Done</Typography>
             </Button>

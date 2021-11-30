@@ -9,6 +9,7 @@ import { Button } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import { Grid } from '@material-ui/core';
 import CircularProgress from '@mui/material/CircularProgress';
+import Container from '@mui/material/Container';
 
 //redux stuff
 import { connect } from 'react-redux';
@@ -63,11 +64,14 @@ class login extends Component {
         const { errors } = this.state;
 
         return (
+            <Container maxWidth="sm">
             <Grid container 
             spacing={0}
             align="center"
             justifyContent="center"
-            direction="column" className={classes.form}>
+            direction="column"
+            className={classes.form}
+            >
                 <Grid item sm/>
                 <Grid item sm>
                     
@@ -105,6 +109,7 @@ class login extends Component {
                 </Grid>
                 <Grid item sm/>
             </Grid>
+            </Container>
         )
     }
 }
