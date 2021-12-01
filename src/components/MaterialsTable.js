@@ -22,7 +22,8 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import { visuallyHidden } from '@mui/utils';
 import { withStyles } from '@mui/material';
-import axois from 'axios';
+import axios from 'axios';
+import MyButton from '../util/MyButton';
 
 function createData(materialExactName, quantity, length, width, heigth, price, 
   sqftPerBox, quantityInBox, sqftPerTile, manufacturer, uniqueCode, userHandle, createdAt, materialId ) {
@@ -69,9 +70,18 @@ function populateRowsArray(data){
 
 // function deleteRows(arrayOfRows){
 
-  
 
-//   axios
+// console.log(arrayOfRows);
+
+//   // arrayOfRows.forEach(material=>(
+//   //   axios.delete(`/material/${material}`)
+//   //   .then(()=>{
+//   //       window.location.reload();
+//   //   })
+//   //   .catch((err) => {
+//   //       console.log(err.response.data);
+//   //   })
+//   //   ))
 
 // }
 
@@ -245,6 +255,24 @@ EnhancedTableHead.propTypes = {
 const EnhancedTableToolbar = (props) => {
   const { numSelected } = props;
 
+  const deleteRows = (arrayOfRows) => (event) => {
+    event.preventDefault();
+    console.log(arrayOfRows);
+
+  arrayOfRows.forEach(material=>(
+    axios.delete(`/material/${material}`)
+    .then(()=>{
+        window.location.reload();
+        console.log("success");
+    })
+    .catch((err) => {
+        console.log(err.response.data);
+    })
+    ))
+
+  }
+  
+
   return (
     <Toolbar
       sx={{
@@ -277,11 +305,14 @@ const EnhancedTableToolbar = (props) => {
       )}
 
       {numSelected > 0 ? (
-        <Tooltip title="Delete">
-          <IconButton>
-            <DeleteIcon />
-          </IconButton>
-        </Tooltip>
+        // <Tooltip title="Delete">
+        //   <IconButton onClick={deleteRows(props.rowsArray)}>
+        //     <DeleteIcon />
+        //   </IconButton>
+        // </Tooltip>
+        <MyButton tip="Delete" onClick={deleteRows(props.rowsArray)}>
+          <DeleteIcon />
+        </MyButton>
       ) : (
         <Tooltip title="Filter list">
           <IconButton>
@@ -376,7 +407,7 @@ export default function EnhancedTable(props) {
   return (
     <Box sx={{ width: '100%' }} style={{ width: 1200}}>
       <Paper sx={{ width: '100%', mb: 2 }}>
-        <EnhancedTableToolbar numSelected={selected.length} />
+        <EnhancedTableToolbar numSelected={selected.length} rowsArray={selected} />
         <TableContainer>
           <Table
             // style={{ width: 1900}}

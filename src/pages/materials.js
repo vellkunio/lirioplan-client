@@ -14,7 +14,6 @@ class materials extends Component {
                 this.setState({
                     materials: res.data
                 })
-                console.log(this.state.materials);
             })
             .catch(err => console.log(err));
     }
