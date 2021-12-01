@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import MyButton from '../util/MyButton';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import CreateNewFolderIcon from '@mui/icons-material/CreateNewFolder';
 import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
 import Checkbox from '@mui/material/Checkbox';
@@ -13,6 +12,8 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import LinearProgress from '@mui/material/LinearProgress';
+import AddBusinessIcon from '@mui/icons-material/AddBusiness';
+import Alert from '@mui/material/Alert';
 
 //MUI Dialog stuff
 import Dialog from '@mui/material/Dialog';
@@ -89,7 +90,7 @@ export class CreateProject extends Component {
 
         axios.post(`/addProject`, projectData)
         .then((res) => {
-            this.state ={
+            this.setState({
                 bossCompany: '',
                 address: '',
                 isFinished: false,
@@ -102,21 +103,18 @@ export class CreateProject extends Component {
                 errors: {},
                 dialog: false,
                 loading: false
-            }
-            // this.dialogToCloseState();
+            })
+            
         })
-        // .then(()=>{
-        //     //ADD CONDITION THAT IF IT'S ON PROJECTS PAGE --- RELOAD PAGE
-        //     // window.location.reload();
-        // })
-        
-        // .catch(err => console.log(err));
         .catch((err) => {
             this.setState({
                 errors: err.response.data,
                 loading: false
             })
         })
+        if(this.state.errors.length<0) {
+            <Alert severity="success">This is a success alert — check it out!</Alert>
+        }
     }
 
 
@@ -129,7 +127,7 @@ export class CreateProject extends Component {
         return (
             <Fragment>
             <MyButton tip="Add new project" onClick={this.dialogToOpenState}>
-                <CreateNewFolderIcon />
+                <AddBusinessIcon />
             </MyButton>
 
             <Dialog 
@@ -176,7 +174,7 @@ export class CreateProject extends Component {
             {/* Value of the project: *makeMoney* */}
             <TextField
                 id="makeMoney"
-                type="text"
+                type="number"
                 name="makeMoney"
                 label="Income from the project" 
                 variant="standard" 
@@ -194,7 +192,7 @@ export class CreateProject extends Component {
             {/* Expences for the project *spendMoney* */}
             <TextField
                 id="spendMoney"
-                type="text"
+                type="number"
                 name="spendMoney"
                 label="Cost of project" 
                 variant="standard" 
@@ -212,7 +210,7 @@ export class CreateProject extends Component {
             {/* Size: *size* SqFt */}
             <TextField
                 id="size"
-                type="text"
+                type="number"
                 name="size"
                 label="Size" 
                 variant="standard" 
