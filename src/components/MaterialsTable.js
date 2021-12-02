@@ -471,6 +471,9 @@ export default function EnhancedTable(props) {
                       <TableCell align="right">{row.uniqueCode}</TableCell>
                       <TableCell align="right">{row.userHandle}</TableCell>
                       <TableCell align="right">{row.createdAt.toString().substring(0,10)}</TableCell>
+                      <TableCell align="right">
+                        Edit
+                      </TableCell>
                     </TableRow>
                   );
                 })}
