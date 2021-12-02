@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types'
 import MyButton from '../util/MyButton';
-import CreateNewFolderIcon from '@mui/icons-material/CreateNewFolder';
 import FolderIcon from '@mui/icons-material/Folder';
 import HomeIcon from '@material-ui/icons/Home';
 import CategoryIcon from '@mui/icons-material/Category';
@@ -14,6 +13,7 @@ import { withRouter } from 'react-router'
 
 import { logoutUser } from '../redux/actions/userActions';
 import CreateProject from './CreateProject';
+import CreateMaterial from './CreateMaterial';
 
 
 //MUI stuff
@@ -45,6 +45,7 @@ class Navbar extends Component {
                             {/* <MyButton tip="Create a project!">
                                 <CreateNewFolderIcon fontSize="large"/>
                             </MyButton> */}
+                            
                             <CreateProject />
                             <Link to="/">
                             <MyButton tip="Home" >
@@ -66,10 +67,10 @@ class Navbar extends Component {
                                 <PaidIcon fontSize="large" style={location.pathname === '/finance' ? {color:'#e9e8ed'} : {color:'#9d98a0'}}/>
                             </MyButton>
                             </Link>
+                            <CreateMaterial />
                             <MyButton tip="Logout" onClick={this.handleLogout}>
                                 <LogoutIcon style={{color: '#202111'}}/>
                             </MyButton>
-
                             
                         </Fragment>
                     ) : (
