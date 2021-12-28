@@ -37,6 +37,9 @@ class Navbar extends Component {
         const { authenticated, location } = this.props;
 
         return (
+        <div>
+        {location.pathname !== '/' && 
+
             <AppBar>
                 <Toolbar className="nav-container">
                     {authenticated ? (
@@ -82,7 +85,10 @@ class Navbar extends Component {
                     )}
                 </Toolbar>
             </AppBar>
+        }
+        </div>
         )
+        
     }
 }
 
