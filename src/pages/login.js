@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
 import { Grid } from '@material-ui/core';
 import CircularProgress from '@mui/material/CircularProgress';
 import Container from '@mui/material/Container';
+import './login.css';
 
 //redux stuff
 import { connect } from 'react-redux';
