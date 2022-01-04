@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 
 //fonts
-import './fonts/Belleza/Belleza-Regular.ttf';
+// import './fonts/Belleza/Belleza-Regular.ttf';
 // import './fonts/Merryweather/Merriweather-Black.ttf'; 
 // import './fonts/Merryweather/Merriweather-BlackItalic.ttf';
 // import './fonts/Merryweather/Merriweather-BoldItalic.ttf';

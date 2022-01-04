@@ -2,8 +2,13 @@ import React, { Component } from 'react';
 import AOS from 'aos';
 // import { Transition, TransitionGroup, CSSTransition } from "react-transition-group";
 import '../App.css'
+
+import anime from 'animejs';
+
 import { useTransition, animated } from '@react-spring/web'
+
 import FrontImageTransition from '../components/FrontImageTransition'
+import NumberCount from '../components/NumberCount'
 
 import FrontPic1 from '../images/FrontPicture1.png';
 import FrontPic2 from '../images/FrontPicture2.png';
@@ -48,7 +53,7 @@ import Grid from '@mui/material/Grid';
 //TODO
 //Scmooth scroll - https://www.digitalocean.com/community/tutorials/how-to-implement-smooth-scrolling-in-react
 //OnScroll effects - https://www.react-reveal.com/tutorials/
-//Animate.js 
+//Animate.js
 //Parallax - https://www.npmjs.com/package/react-scroll-parallax
 
 
@@ -96,6 +101,8 @@ class home extends Component {
         }
     }
 
+
+
     switchImage() {
         if (this.state.currentImage < this.state.images.length - 1) {
           this.setState({
@@ -115,64 +122,65 @@ class home extends Component {
 
       //uncomment for slide show
       componentDidMount() {
-        setInterval(this.switchImage, 5000);
+        setInterval(this.switchImage, 7000); //todelete
         AOS.init();
         AOS.refresh();
       }
 
-    
+
     render() {
-        
+
         const windowWidth=window.screen.availWidth;
         console.log(windowWidth);
 
         return (
             <div className="mainDiv" >
+                <div >
+                    <FrontImageTransition />
+                </div>
 
-                {/* <FrontImageTransition /> */}
-                
-                
+                    <div>
                     {/* <div style={{ backgroundImage: `url(${this.state.images[this.state.currentImage].imgPath})`,
                     height: "715px", backgroundPosition: "center", backgroundSize: "cover"  }}>
 
-                        {this.state.images[this.state.currentImage].fontColor === 'black' ? 
+                        {this.state.images[this.state.currentImage].fontColor === 'black' ?
                         <img src={bracketTopBlack} alt="bracket"
-                            style={{display: 'block', marginLeft: 'auto', 
+                            style={{display: 'block', marginLeft: 'auto',
                             marginRight: 'auto', paddingTop: '142px'
                             }}
-                            /> : 
+                            /> :
                             <img src={bracketTop} alt="bracket"
-                            style={{display: 'block', marginLeft: 'auto', 
+                            style={{display: 'block', marginLeft: 'auto',
                             marginRight: 'auto', paddingTop: '142px'
                             }}
                         />}
 
 
-                        
-                        <div className="font-belleza" 
+
+                        <div className="font-belleza"
                         style={{fontSize: "36px", display: 'block', textAlign: 'center',
                          letterSpacing: '6px', color: this.state.images[this.state.currentImage].fontColor}}>
                             LIRIOPLAN
                         </div>
 
-                        <div className="font-belleza" 
+                        <div className="font-belleza"
                         style={{fontSize: "24px", display: 'block', textAlign: 'center',
                          letterSpacing: '6px', color: this.state.images[this.state.currentImage].fontColor}}>
                             Stone and tile
                         </div>
 
-                        {this.state.images[this.state.currentImage].fontColor === 'black' ? 
-                        <img src={bracketBtmBlack} alt="bracket" 
-                        style={{display: 'block', marginLeft: 'auto', marginRight: 'auto', paddingTop: '16px'}} 
-                        /> : 
-                            <img src={bracketBtm} alt="bracket" 
+                        {this.state.images[this.state.currentImage].fontColor === 'black' ?
+                        <img src={bracketBtmBlack} alt="bracket"
+                        style={{display: 'block', marginLeft: 'auto', marginRight: 'auto', paddingTop: '16px'}}
+                        /> :
+                            <img src={bracketBtm} alt="bracket"
                         style={{display: 'block', marginLeft: 'auto', marginRight: 'auto', paddingTop: '16px'}}
                         />}
 
 
 
 
-                        <div className="font-merriweather" 
+                        <div className="font-merriweather"
                         style={{fontSize: "16px", display: 'block', textAlign: 'right',
                          letterSpacing: '4px', color: this.state.images[this.state.currentImage].fontColor,
                           fontWeight: 300, fontStyle: 'italic', paddingTop: '96px', lineHeight: '150%',
@@ -214,33 +222,47 @@ class home extends Component {
 
 
                 {/* NewAnimationAttemptEnds */}
+                    </div>
 
 
-
-                <div style={{ textAlign:"center",  fontWeight:"400",
+                <div
+                style={{ textAlign:"center",  fontWeight:"400",
                     fontStyle:"italic", fontSize: '24px', letterSpacing: "4px",
-                    marginTop: "66px", opacity: '80%'
+                     opacity: '80%', paddingTop: '781px'
                     }} >
-                    <h1 className="font-merriweather" >
+                    <h1
+                    data-aos="fade-up-right"
+                    data-aos-anchor-placement="center-bottom"
+                    className="font-merriweather" >
                         LIRIOPLAN
                     </h1>
                 </div>
+
+                {/* <NumberCount number={30}/> */}
 
                 <div style={{ textAlign:"center",  fontWeight:"400",
                     fontStyle:"normal", fontSize: '16px', letterSpacing: "4px",
                     marginTop: "16px", lineHeight: '180%', width: '312px',
                     marginLeft: "auto", marginRight: 'auto'
                     }} >
-                    <p className="font-merriweather" >
-                    Most professional tile 
-                    installation in Ontario. We 
-                    design and install inside 
-                    and outside tile and 
-                    decorative rocks. Do you 
+                    <p
+                    data-aos="fade-up-left"
+                    data-aos-anchor-placement="center-bottom"
+                    className="font-merriweather" >
+                    Most professional tile
+                    installation in Ontario. We
+                    design and install inside
+                    and outside tile and
+                    decorative rocks. Do you
                     need to intall or upgrade
-                    tile? Let professionals 
+                    tile? Let professionals
                     take care of it!
                     </p>
+                </div>
+
+                {/* BGElipse */}
+                <div>
+                    
                 </div>
 
                 {/* Cards */}
@@ -257,7 +279,7 @@ class home extends Component {
 
                         {/* line here */}
                         <img src={smallHorizontalLine} alt="line"
-                            style={{display: 'block', marginLeft: 'auto', 
+                            style={{display: 'block', marginLeft: 'auto',
                             marginRight: 'auto', padding: '0px',
                             pointerEvents: 'none'
                             }}
@@ -290,12 +312,12 @@ class home extends Component {
                         }}>
 
                             <img src={check} alt="check"
-                                style={{display: 'block', marginLeft: 'auto', 
+                                style={{display: 'block', marginLeft: 'auto',
                                 marginRight: 'auto', padding: '0px', paddingTop: '40px',
                                 width: '45px', pointerEvents: 'none'
                                 }}
                             />
-                            <h3 className="font-merriweather" 
+                            <h3 className="font-merriweather"
                             style={{
                             textAlign:"center",  fontWeight:"900",
                             fontSize:'18px', color: 'white',
@@ -303,23 +325,23 @@ class home extends Component {
                             }}>
                                 Perfection
                             </h3>
-                            <p className="font-merriweather" 
+                            <p className="font-merriweather"
                             style={{
                             textAlign:"center",  fontWeight:"400",
                             fontSize:'13px', color: 'white',
                             width: '220px', marginLeft: 'auto',marginRight: 'auto',
                             letterSpacing: '0.17em', marginTop:'24px', lineHeight: '160%'
                             }}>
-                                With best quality 
-                                installation your house 
-                                will make you happy for 
+                                With best quality
+                                installation your house
+                                will make you happy for
                                 over a hundred years
                             </p>
 
                         </div>
 
                         {/* Card2 */}
-                        <div 
+                        <div
                         data-aos="fade-left"
                         style={{
                         width: '267px', height: '278px',
@@ -330,12 +352,12 @@ class home extends Component {
                         }}>
 
                             <img src={clock} alt="clock"
-                                style={{display: 'block', marginLeft: 'auto', 
+                                style={{display: 'block', marginLeft: 'auto',
                                 marginRight: 'auto', padding: '0px', paddingTop: '40px',
                                 width: '45px', pointerEvents: 'none'
                                 }}
                             />
-                            <h3 className="font-merriweather" 
+                            <h3 className="font-merriweather"
                             style={{
                             textAlign:"center",  fontWeight:"900",
                             fontSize:'18px', color: 'white',
@@ -343,22 +365,22 @@ class home extends Component {
                             }}>
                                 In time
                             </h3>
-                            <p className="font-merriweather" 
+                            <p className="font-merriweather"
                             style={{
                             textAlign:"center",  fontWeight:"400",
                             fontSize:'13px', color: 'white',
                             width: '220px', marginLeft: 'auto',marginRight: 'auto',
                             letterSpacing: '0.17em', marginTop:'24px', lineHeight: '160%'
                             }}>
-                                Time can be 
-                                challenging, but we 
-                                know how important it 
+                                Time can be
+                                challenging, but we
+                                know how important it
                                 is to finish in time
                             </p>
                         </div>
 
                         {/* card3 */}
-                        <div 
+                        <div
                         data-aos="fade-right"
                         style={{
                         width: '267px', height: '278px',
@@ -369,12 +391,12 @@ class home extends Component {
                         }}>
 
                             <img src={warranty} alt="warranty"
-                                style={{display: 'block', marginLeft: 'auto', 
+                                style={{display: 'block', marginLeft: 'auto',
                                 marginRight: 'auto', padding: '0px', paddingTop: '40px',
                                 width: '45px', pointerEvents: 'none'
                                 }}
                             />
-                            <h3 className="font-merriweather" 
+                            <h3 className="font-merriweather"
                             style={{
                             textAlign:"center",  fontWeight:"900",
                             fontSize:'18px', color: 'white',
@@ -382,17 +404,17 @@ class home extends Component {
                             }}>
                                 Warranty
                             </h3>
-                            <p className="font-merriweather" 
+                            <p className="font-merriweather"
                             style={{
                             textAlign:"center",  fontWeight:"400",
                             fontSize:'13px', color: 'white',
                             width: '220px', marginLeft: 'auto', marginRight: 'auto',
                             letterSpacing: '0.17em', marginTop:'24px', lineHeight: '160%'
                             }}>
-                                Our company is 
-                                confident at we do, 
-                                that’s why we give 
-                                warranty to all of our 
+                                Our company is
+                                confident at we do,
+                                that’s why we give
+                                warranty to all of our
                                 clients
                             </p>
                         </div>
@@ -412,7 +434,7 @@ class home extends Component {
                             textAlign: 'center', fontWeight: '700',
                             fontSize: '28px', letterSpacing: '0.05em',
                             fontStyle: 'italic', marginTop: '56px',
-                            marginLeft: '-55px', 
+                            marginLeft: '-55px',
                             backgroundImage: `url(${goldTexture})`,
                             WebkitBackgroundClip: 'text',
                             WebkitTextFillColor: 'transparent'
@@ -423,7 +445,7 @@ class home extends Component {
 
                         {/* Top Line */}
                         <img src={topLine} alt="line"
-                            style={{display: 'block', marginLeft: 'auto', 
+                            style={{display: 'block', marginLeft: 'auto',
                             marginRight: 'auto', padding: '0px', width: '297px',
                             position: 'absolute', textAlign: 'center',
                             left: '0', right: '0', marginTop: '8px', pointerEvents: 'none'
@@ -465,28 +487,28 @@ class home extends Component {
                                 <p className="font-merriweather" style={{
                                     marginTop: '0px', fontWeight: '400',
                                     fontSize: '32px', color:'white',
-                                    letterSpacing: '0.17em', 
+                                    letterSpacing: '0.17em',
                                 }}>12.712</p>
                                 <p className="font-merriweather" style={{
                                     marginTop: '8px', fontWeight: '900',
                                     fontSize: '18px', color:'white', opacity: '50%',
-                                    letterSpacing: '0.25em', 
+                                    letterSpacing: '0.25em',
                                 }}>clients</p>
-                                
+
                                 <div style={{
                                     display: 'block', width: '9px', height: '9px',
-                                    borderRadius: '50%', marginLeft: 'auto', marginRight: 'auto', 
+                                    borderRadius: '50%', marginLeft: 'auto', marginRight: 'auto',
                                     backgroundColor: "white", marginTop: '51px'
                                 }}>
                                 </div>
 
                             </div>
-                            
+
                         </div>
 
                         {/* Circle Sides */}
                         <img src={CircleSides} alt="line"
-                            style={{display: 'block', marginLeft: 'auto', 
+                            style={{display: 'block', marginLeft: 'auto',
                             marginRight: 'auto', padding: '0px', width: '297px',
                             position: 'absolute', textAlign: 'center',
                             left: '0', right: '0', marginTop: '38px', pointerEvents: 'none'
@@ -513,23 +535,23 @@ class home extends Component {
                                 <p className="font-merriweather" style={{
                                     marginTop: '0px', fontWeight: '400',
                                     fontSize: '32px', color:'black',
-                                    letterSpacing: '0.17em', 
+                                    letterSpacing: '0.17em',
                                 }}>12.000</p>
                                 <p className="font-merriweather" style={{
                                     marginTop: '8px', fontWeight: '900',
                                     fontSize: '18px', color:'black', opacity: '50%',
-                                    letterSpacing: '0.25em', 
+                                    letterSpacing: '0.25em',
                                 }}>projects</p>
-                                
+
                                 <div style={{
                                     display: 'block', width: '9px', height: '9px',
-                                    borderRadius: '50%', marginLeft: 'auto', marginRight: 'auto', 
+                                    borderRadius: '50%', marginLeft: 'auto', marginRight: 'auto',
                                     backgroundColor: "black", marginTop: '51px'
                                 }}>
                                 </div>
 
                             </div>
-                            
+
                         </div>
 
 
@@ -550,23 +572,23 @@ class home extends Component {
                                 <p className="font-merriweather" style={{
                                     marginTop: '0px', fontWeight: '400',
                                     fontSize: '32px', color:'white',
-                                    letterSpacing: '0.17em', 
+                                    letterSpacing: '0.17em',
                                 }}>49</p>
                                 <p className="font-merriweather" style={{
                                     marginTop: '8px', fontWeight: '900',
                                     fontSize: '18px', color:'white', opacity: '50%',
-                                    letterSpacing: '0.25em', 
+                                    letterSpacing: '0.25em',
                                 }}>employees</p>
-                                
+
                                 <div style={{
                                     display: 'block', width: '9px', height: '9px',
-                                    borderRadius: '50%', marginLeft: 'auto', marginRight: 'auto', 
+                                    borderRadius: '50%', marginLeft: 'auto', marginRight: 'auto',
                                     backgroundColor: "white", marginTop: '51px'
                                 }}>
                                 </div>
 
                             </div>
-                            
+
                         </div>
 
 
@@ -576,7 +598,7 @@ class home extends Component {
 
                 {/* BottomLine */}
                 <img src={BottomLine} alt="line"
-                    style={{display: 'block', marginLeft: 'auto', 
+                    style={{display: 'block', marginLeft: 'auto',
                     marginRight: 'auto', padding: '0px', width: '297px',
                     position: 'absolute', textAlign: 'center',
                     left: '0', right: '0', marginTop: '-157px',
@@ -586,7 +608,7 @@ class home extends Component {
 
             {/* Benefits */}
             <div>
-                <h3 className="font-merriweather" 
+                <h3 className="font-merriweather"
                 style={{
                 textAlign:"center",  fontWeight:"700",
                 fontSize:'32px', color: 'white', opacity: '50%',
@@ -596,7 +618,10 @@ class home extends Component {
                 </h3>
 
                 {/* Benefit1 */}
-                <h5 className="font-belleza" style={{
+                <h5 
+                data-aos="zoom-in-up"
+                data-aos-anchor-placement="center-bottom"
+                className="font-belleza" style={{
                     marginTop: '32px', textAlign: 'center', fontWeight: "400",
                     fontSize: '28px', letterSpacing: '0.17em', opacity: '90%',
                     color: 'white'
@@ -604,25 +629,34 @@ class home extends Component {
                     Relax
                 </h5>
 
-                <p className="font-merriweather" 
+                <p 
+                data-aos="zoom-in-up"
+                data-aos-anchor-placement="center-bottom"
+                className="font-merriweather"
                 style={{
                 textAlign:"center",  fontWeight:"400",
                 fontSize:'16px', color: 'black',
                 width: '250px', marginLeft: 'auto', marginRight: 'auto',
                 letterSpacing: '0.17em', marginTop:'16px', lineHeight: '160%'
                 }}>
-                    Put all hard work on us 
-                    and enjoy doing what 
-                    you love to do 
+                    Put all hard work on us
+                    and enjoy doing what
+                    you love to do
                 </p>
 
-                <div style={{
+                <div 
+                data-aos="zoom-in-up"
+                data-aos-anchor-placement="center-bottom"
+                style={{
                     height: '53px', width: '1px', backgroundColor: 'black',
                     marginLeft: 'auto', marginRight: 'auto', marginTop: '8px'
                 }}></div>
 
                 {/* Benefit2 */}
-                <h5 className="font-belleza" style={{
+                <h5
+                data-aos="zoom-in-up"
+                data-aos-anchor-placement="center-bottom"
+                className="font-belleza" style={{
                     marginTop: '32px', textAlign: 'center', fontWeight: "400",
                     fontSize: '28px', letterSpacing: '0.17em', opacity: '90%',
                     color: 'white'
@@ -630,25 +664,34 @@ class home extends Component {
                     Stand out
                 </h5>
 
-                <p className="font-merriweather" 
+                <p 
+                data-aos="zoom-in-up"
+                data-aos-anchor-placement="center-bottom"
+                className="font-merriweather"
                 style={{
                 textAlign:"center",  fontWeight:"400",
                 fontSize:'16px', color: 'black',
                 width: '250px', marginLeft: 'auto', marginRight: 'auto',
                 letterSpacing: '0.17em', marginTop:'16px', lineHeight: '160%'
                 }}>
-                    Become owner of the 
-                    best house in the 
+                    Become owner of the
+                    best house in the
                     neighborhood
                 </p>
 
-                <div style={{
+                <div 
+                data-aos="zoom-in-up"
+                data-aos-anchor-placement="center-bottom"
+                style={{
                     height: '53px', width: '1px', backgroundColor: 'black',
                     marginLeft: 'auto', marginRight: 'auto', marginTop: '8px'
                 }}></div>
 
                 {/* Benefit3 */}
-                <h5 className="font-belleza" style={{
+                <h5 
+                data-aos="zoom-in-up"
+                data-aos-anchor-placement="center-bottom"
+                className="font-belleza" style={{
                     marginTop: '32px', textAlign: 'center', fontWeight: "400",
                     fontSize: '28px', letterSpacing: '0.17em', opacity: '90%',
                     color: 'white'
@@ -656,27 +699,30 @@ class home extends Component {
                     Get help
                 </h5>
 
-                <p className="font-merriweather" 
+                <p 
+                data-aos="zoom-in-up"
+                data-aos-anchor-placement="center-bottom"
+                className="font-merriweather"
                 style={{
                 textAlign:"center",  fontWeight:"400",
                 fontSize:'16px', color: 'black',
                 width: '250px', marginLeft: 'auto', marginRight: 'auto',
                 letterSpacing: '0.17em', marginTop:'16px', lineHeight: '160%'
                 }}>
-                    Not sure what you 
-                    want? Pick best for 
-                    your house together 
+                    Not sure what you
+                    want? Pick best for
+                    your house together
                     with our designers
                 </p>
 
                 <Button variant="contained"
                 style={{backgroundColor: 'rgba(35, 32, 71, 0.25)',
                 marginRight: 'auto', marginLeft: 'auto', marginTop: '48px', position: 'center',
-                
+
                 }}
                 sx={{display:'flex'}}
                 >
-                <p className="font-merriweather" 
+                <p className="font-merriweather"
                 style={{
                 textAlign:"center",  fontWeight:"400",
                 fontSize:'16px', color: 'white',
@@ -703,22 +749,31 @@ class home extends Component {
                     EXAMPLES
                 </h2>
 
-                <img src={Example1} alt="Example Bathroom"
-                    style={{display: 'block', marginLeft: 'auto', 
+                <img 
+                data-aos="zoom-out-up"
+                data-aos-anchor-placement="center-bottom"
+                src={Example1} alt="Example Bathroom"
+                    style={{display: 'block', marginLeft: 'auto',
                     marginRight: 'auto', padding: '0px', width: '289px',
                     textAlign: 'center',
                     left: '0', right: '0', marginTop: '40px'
                     }}
                 />
-                <img src={Example2} alt="Example Bathroom"
-                    style={{display: 'block', marginLeft: 'auto', 
+                <img 
+                data-aos="zoom-out-up"
+                data-aos-anchor-placement="center-bottom"
+                src={Example2} alt="Example Bathroom"
+                    style={{display: 'block', marginLeft: 'auto',
                     marginRight: 'auto', padding: '0px', width: '289px',
                     textAlign: 'center',
                     left: '0', right: '0', marginTop: '40px'
                     }}
                 />
-                <img src={Example3} alt="Example Bathroom"
-                    style={{display: 'block', marginLeft: 'auto', 
+                <img 
+                data-aos="zoom-out-up"
+                data-aos-anchor-placement="center-bottom"
+                src={Example3} alt="Example Bathroom"
+                    style={{display: 'block', marginLeft: 'auto',
                     marginRight: 'auto', padding: '0px', width: '289px',
                     textAlign: 'center',
                     left: '0', right: '0', marginTop: '40px'
@@ -727,7 +782,7 @@ class home extends Component {
 
                 {/* Devider */}
                 <img src={LineDevider} alt="Devider"
-                    style={{display: 'block', marginLeft: 'auto', 
+                    style={{display: 'block', marginLeft: 'auto',
                     marginRight: 'auto', padding: '0px', marginTop: '64px',
                     pointerEvents: 'none'
                     }}
@@ -737,8 +792,11 @@ class home extends Component {
 
             {/* Also */}
             <div>
-                
-            <h4 className="font-merriweather" 
+
+            <h4 
+            data-aos="zoom-in"
+            data-aos-anchor-placement="center-bottom"
+            className="font-merriweather"
             style={{
             textAlign:"center",  fontWeight:"700",
             fontSize:'32px', color: 'white', opacity: '50%',
@@ -748,7 +806,10 @@ class home extends Component {
             </h4>
 
             {/* Also1 */}
-            <h2 className="font-merriweather" style={{
+            <h2 
+            data-aos="zoom-in"
+            data-aos-anchor-placement="center-bottom"
+            className="font-merriweather" style={{
             opacity: '95%', fontSize: '22px', fontWeight: '400',
             lineHeight: '28px', letterSpacing: '0.17em', textAlign: 'center',
             marginTop: '56px', color: 'white'
@@ -756,7 +817,10 @@ class home extends Component {
                 Top-quality tile
             </h2>
 
-            <p className="font-merriweather" 
+            <p 
+            data-aos="zoom-in"
+            data-aos-anchor-placement="center-bottom"
+            className="font-merriweather"
             style={{
             textAlign:"center",  fontWeight:"400",
             fontSize:'16px', color: 'white',
@@ -764,10 +828,10 @@ class home extends Component {
             letterSpacing: '0.17em', marginTop:'24px', lineHeight: '160%',
             opacity: '80%'
             }}>
-                We work only with the 
-                best manufacturers who 
-                proved their quality 
-                after decades, for you, to 
+                We work only with the
+                best manufacturers who
+                proved their quality
+                after decades, for you, to
                 feel even more luxury
             </p>
 
@@ -778,7 +842,10 @@ class home extends Component {
             }}></div>
 
             {/* Also2 */}
-            <h2 className="font-merriweather" style={{
+            <h2 
+            data-aos="zoom-in"
+            data-aos-anchor-placement="center-bottom"
+            className="font-merriweather" style={{
             opacity: '95%', fontSize: '22px', fontWeight: '400',
             lineHeight: '28px', letterSpacing: '0.17em', textAlign: 'center',
             marginTop: '40px', color: 'white'
@@ -786,7 +853,10 @@ class home extends Component {
                 Unique Styles
             </h2>
 
-            <p className="font-merriweather" 
+            <p 
+            data-aos="zoom-in"
+            data-aos-anchor-placement="center-bottom"
+            className="font-merriweather"
             style={{
             textAlign:"center",  fontWeight:"400",
             fontSize:'16px', color: 'white',
@@ -794,26 +864,26 @@ class home extends Component {
             letterSpacing: '0.17em', marginTop:'24px', lineHeight: '160%',
             opacity: '80%'
             }}>
-                We love doing unique 
-                projects by combining 
-                our expirience and your 
+                We love doing unique
+                projects by combining
+                our expirience and your
                 wishes
             </p>
 
             {/* Devider */}
             <img src={LineDevider} alt="Devider"
-                style={{display: 'block', marginLeft: 'auto', 
+                style={{display: 'block', marginLeft: 'auto',
                 marginRight: 'auto', padding: '0px', marginTop: '40px',
                 pointerEvents: 'none'
                 }}
             />
 
             </div>
-            
+
             {/* Reviews */}
             <div>
 
-            <h2 className="font-merriweather" 
+            <h2 className="font-merriweather"
             style={{
             textAlign:"center",  fontWeight:"900",
             fontSize:'32px', color: 'white', opacity: '50%',
@@ -827,12 +897,12 @@ class home extends Component {
                 width: this.windowWidth,
                 whiteSpace: 'nowrap', overflowX: 'auto', overflowY: 'hidden'
             }}>
-                
+
                 {/* Review 1 */}
                 <div style={{
                     width: '234px', height: '327px', display: 'inline-block',
                     backgroundColor: 'rgba(255, 255, 255, 0.25)',
-                    boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)', 
+                    boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
                     borderRadius: '10px', marginTop: '32px', marginBottom: '40px',
                     marginLeft: '70px', marginRight: '24px'
                 }}>
@@ -855,17 +925,17 @@ class home extends Component {
                     <p className="font-merriweather" style={{
                         color: 'white', fontWeight: '300', fontSize: '12px',
                         lineHeight: '19px', textAlign: 'center', letterSpacing: '0.12em',
-                        marginTop: '8px', width: '186px', whiteSpace: 'normal', 
+                        marginTop: '8px', width: '186px', whiteSpace: 'normal',
                         overflowX: 'hidden', overflowY: 'hidden', marginLeft: 'auto', marginRight: 'auto'
                     }}>
-                        I was building a house 
-                        and my biggest struggle 
-                        was to make everything 
-                        in my style. Lirioplan 
-                        didn’t just help me to 
-                        make it georgeous, but 
-                        also suggested some 
-                        extra tips which made it 
+                        I was building a house
+                        and my biggest struggle
+                        was to make everything
+                        in my style. Lirioplan
+                        didn’t just help me to
+                        make it georgeous, but
+                        also suggested some
+                        extra tips which made it
                         look 1000% better!
                     </p>
 
@@ -875,7 +945,7 @@ class home extends Component {
                 <div style={{
                     width: '234px', height: '327px', display: 'inline-block',
                     backgroundColor: 'rgba(255, 255, 255, 0.25)',
-                    boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)', 
+                    boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
                     borderRadius: '10px', marginTop: '32px', marginBottom: '40px', marginRight: '24px'
                 }}>
                     <h5 className="font-belleza" style={{
@@ -897,16 +967,16 @@ class home extends Component {
                     <p className="font-merriweather" style={{
                         color: 'white', fontWeight: '300', fontSize: '12px',
                         lineHeight: '19px', textAlign: 'center', letterSpacing: '0.12em',
-                        marginTop: '8px', width: '186px', whiteSpace: 'normal', 
+                        marginTop: '8px', width: '186px', whiteSpace: 'normal',
                         overflowX: 'hidden', overflowY: 'hidden', marginLeft: 'auto', marginRight: 'auto'
                     }}>
-                        Thank you so much! Very 
-                        client-oriented company. 
-                        All guys are very polite, 
-                        friendly and professional. 
-                        Came in time and did 
-                        everything better than I 
-                        expected. Sure it’s going 
+                        Thank you so much! Very
+                        client-oriented company.
+                        All guys are very polite,
+                        friendly and professional.
+                        Came in time and did
+                        everything better than I
+                        expected. Sure it’s going
                         to last forever.
                     </p>
 
@@ -916,7 +986,7 @@ class home extends Component {
                 <div style={{
                     width: '234px', height: '327px', display: 'inline-block',
                     backgroundColor: 'rgba(255, 255, 255, 0.25)',
-                    boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)', 
+                    boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
                     borderRadius: '10px', marginTop: '32px', marginBottom: '40px',
                     marginRight: '70px'
                 }}>
@@ -925,7 +995,7 @@ class home extends Component {
                         lineHeight: '20px', textAlign: 'center', letterSpacing: '0.17em',
                         paddingTop: '40px'
                     }}>
-                        Vasyl Canuka
+                        Vasyl Caniuca
                     </h5>
 
                     <h6 className="font-merriweather" style={{
@@ -939,19 +1009,18 @@ class home extends Component {
                     <p className="font-merriweather" style={{
                         color: 'white', fontWeight: '300', fontSize: '12px',
                         lineHeight: '19px', textAlign: 'center', letterSpacing: '0.12em',
-                        marginTop: '8px', width: '186px', whiteSpace: 'normal', 
+                        marginTop: '8px', width: '186px', whiteSpace: 'normal',
                         overflowX: 'hidden', overflowY: 'hidden', marginLeft: 'auto', marginRight: 'auto'
                     }}>
                         Just wanted to thank Sam
-                        and his team for an 
-                        excellent service and 
+                        and his team for an
+                        excellent service and
                         perfect tile installation.
-                        He also helped me with
-                        final design and to 
-                        choose right tiles!
-                        asdasdasdsad
-                        asdasdasd
-                        asdasdasdasdsa
+                        I have been working with
+                        Lirioplan for many years
+                        now and it is the only
+                        company I trust in Ontario
+
 
                     </p>
 
@@ -959,14 +1028,14 @@ class home extends Component {
 
             </div>
 
-            
+
 
             </div>
 
             {/* Partners */}
             <div>
 
-            <h2 className="font-merriweather" 
+            <h2 className="font-merriweather"
             style={{
             textAlign:"center",  fontWeight:"900",
             fontSize:'32px', color: 'white', opacity: '15%',
@@ -977,8 +1046,11 @@ class home extends Component {
 
             <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
                 <Grid item xs={6}>
-                <img src={Partners1} alt="Millstone Logo"
-                    style={{display: 'block', marginLeft: 'auto', 
+                <img 
+                data-aos="zoom-out-right"
+                data-aos-anchor-placement="center-bottom"
+                src={Partners1} alt="Millstone Logo"
+                    style={{display: 'block', marginLeft: 'auto',
                     marginRight: 'auto', padding: '0px', width: '133px',
                     textAlign: 'center', marginTop: '32px',
                     left: '0', right: '0'
@@ -986,8 +1058,11 @@ class home extends Component {
                 />
                 </Grid>
                 <Grid item xs={6}>
-                <img src={Partners2} alt="Ironstone Build Logo"
-                    style={{display: 'block', marginLeft: 'auto', 
+                <img 
+                data-aos="zoom-out-left"
+                data-aos-anchor-placement="center-bottom"
+                src={Partners2} alt="Ironstone Build Logo"
+                    style={{display: 'block', marginLeft: 'auto',
                     marginRight: 'auto', padding: '0px', width: '133px',
                     textAlign: 'center', marginTop: '32px',
                     left: '0', right: '0'
@@ -995,8 +1070,11 @@ class home extends Component {
                 />
                 </Grid>
                 <Grid item xs={6}>
-                <img src={Partners3} alt="Rembrands Homes Logo"
-                    style={{display: 'block', marginLeft: 'auto', 
+                <img 
+                data-aos="zoom-out-right"
+                data-aos-anchor-placement="center-bottom"
+                src={Partners3} alt="Rembrands Homes Logo"
+                    style={{display: 'block', marginLeft: 'auto',
                     marginRight: 'auto', padding: '0px', width: '133px',
                     textAlign: 'center', marginTop: '32px',
                     left: '0', right: '0'
@@ -1004,8 +1082,11 @@ class home extends Component {
                 />
                 </Grid>
                 <Grid item xs={6}>
-                <img src={Partners4} alt="Forever Homes Logo"
-                    style={{display: 'block', marginLeft: 'auto', 
+                <img 
+                data-aos="zoom-out-left"
+                data-aos-anchor-placement="center-bottom"
+                src={Partners4} alt="Forever Homes Logo"
+                    style={{display: 'block', marginLeft: 'auto',
                     marginRight: 'auto', padding: '0px', width: '133px',
                     textAlign: 'center', marginTop: '32px',
                     left: '0', right: '0'
@@ -1017,11 +1098,11 @@ class home extends Component {
             <Button variant="contained"
                 style={{backgroundColor: 'rgba(35, 32, 71, 0.5)',
                 marginRight: 'auto', marginLeft: 'auto', marginTop: '48px', position: 'center',
-                
+
                 }}
                 sx={{display:'flex'}}
                 >
-                <p className="font-merriweather" 
+                <p className="font-merriweather"
                 style={{
                 textAlign:"center",  fontWeight:"400",
                 fontSize:'16px', color: 'white',
@@ -1041,27 +1122,33 @@ class home extends Component {
 
             <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
                 <Grid item xs={6}>
-                <img src={Instagram} alt="Millstone Logo"
-                    style={{display: 'block', marginLeft: 'auto', 
+                <img
+                data-aos="zoom-out-right"
+                data-aos-anchor-placement="center-bottom"
+                src={Instagram} alt="Millstone Logo"
+                    style={{display: 'block', marginLeft: 'auto',
                     marginRight: 'auto', padding: '0px', height: '60px',
                     textAlign: 'center', marginTop: '32px',
-                    left: '0', right: '0'
+                    left: '0', right: '0', opacity: '0.9'
                     }}
                 />
                 </Grid>
                 <Grid item xs={6}>
-                <img src={Facebook} alt="Ironstone Build Logo"
-                    style={{display: 'block', marginLeft: 'auto', 
+                <img 
+                data-aos="zoom-out-left"
+                data-aos-anchor-placement="center-bottom"
+                src={Facebook} alt="Ironstone Build Logo"
+                    style={{display: 'block', marginLeft: 'auto',
                     marginRight: 'auto', padding: '0px', height: '60px',
                     textAlign: 'center', marginTop: '32px',
-                    left: '0', right: '0'
+                    left: '0', right: '0', opacity: '0.9'
                     }}
                 />
                 </Grid>
             </Grid>
 
 
-            <p className="font-belleza" 
+            <p className="font-belleza"
             style={{
             textAlign:"center",  fontWeight:"400",
             fontSize:'10px', color: 'white',
@@ -1069,12 +1156,12 @@ class home extends Component {
             letterSpacing: '0.17em', paddingTop:'40px', lineHeight: '12px',
             background: "#000000", marginLeft: 'auto', marginRight: 'auto', marginBottom: '-80px', paddingBottom: '20px'
             }}>
-                © 2021 Lirioplan Ltd. Trademarks and brands 
+                © 2021 Lirioplan Ltd. Trademarks and brands
                 are the property of their respective owners.
                 <br></br>
                 Made by Vellkunio
             </p>
-            
+
 
 
             {/* Main div */}
