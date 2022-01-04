@@ -1,0 +1,56 @@
+@font-face {
+    font-family: "Belleza";
+    src: local("Belleza"),
+     url("./fonts/Belleza/Belleza-Regular.ttf") format("truetype");
+    font-weight: normal;
+}
+/* 
+@font-face {
+    font-family: "Merriweather-Regular";
+    src: local("Merriweather-Regular"),
+     url("./fonts/Merryweather/Merriweather-Regular.ttf") format("truetype");
+    
+}
+
+@font-face {
+    font-family: "Merriweather-Italic";
+    src: local("Merriweather-Italic"),
+     url("./fonts/Merryweather/Merriweather-Italic.ttf") format("truetype");
+}
+@font-face {
+    font-family: "Merriweather-Bold";
+    src: local("Merriweather-Bold"),
+     url("./fonts/Merryweather/Merriweather-Bold.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Merriweather-Black";
+    src: local("Merriweather-Black"),
+     url("./fonts/Merryweather/Merriweather-Black.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Merriweather-BlackItalic";
+    src: local("Merriweather-Merriweather:wght@900"),
+     url("./fonts/Merryweather/Merriweather-BlackItalic.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Merriweather-BoldItalic";
+    src: local("Merriweather-BoldItalic"),
+     url("./fonts/Merryweather/Merriweather-BoldItalic.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Merriweather-Light";
+    src: local("Merriweather-Light"),
+     url("./fonts/Merryweather/Merriweather-Light.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Merriweather-LightItalic";
+    src: local("Merriweather-LightItalic"),
+     url("./fonts/Merryweather/Merriweather-LightItalic.ttf") format("truetype");
+} */
+
+

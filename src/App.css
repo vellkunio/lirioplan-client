@@ -3,7 +3,13 @@ body{
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
-  background-color: rgb(245,245,245);
+  /* background-color: rgb(245,245,245); */
+  /* background: linear-gradient(180deg, #808079 0%, #898A85 10.94%, #737470 24.92%, #000000 100%); */
+  overflow-x: hidden;
+}
+
+.mainDiv{
+  background: linear-gradient(180deg, #808079 0%, #898A85 10.94%, #737470 24.92%, #000000 100%);
 }
 
 .container{
@@ -22,3 +28,28 @@ body{
 .projectInput {
   margin: 50px;
 }
+
+body{
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6{
+  margin: 0;
+}
+p{
+  margin: 0;
+}
+
+
+.font-face-belleza {
+  font-family: "Belleza";
+}
+
+.font-merriweather {
+  font-family: 'Merriweather', serif;
+}
+
+.font-belleza {
+  font-family: 'Belleza', sans-serif;
+}
+

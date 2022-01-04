@@ -19,21 +19,70 @@ const reducers = combineReducers({
 
 const middleware = [thunk];
 
-
+const isGoogle = window.navigator.vendor.includes('Google Inc.');
 const store = createStore (
+    
     reducers,
-    initialState,
-    compose(applyMiddleware(...middleware), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
-)
+    compose(
+        applyMiddleware(...middleware),
+        isGoogle ?
+        window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() : compose
+    )
+);
+
+
+export default store;
+
+//To see mobile website - comment below
+    // const store = createStore (
+    //     reducers,
+    //     initialState,
+    //     compose(applyMiddleware(...middleware), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+    // )
+//Up to here
+
+
+//To see mobile website - uncomment below
+    // const store = createStore (
+    //     reducers,
+    //     initialState,
+    //     compose(applyMiddleware(...middleware))
+    // )
+//Up to here
+
+
+
+
+// var store;
+
+
+
+// if (window.navigator.userAgent.includes('Chrome')) {
+//     store = createStore (
+//         reducers,
+//         initialState,
+//         compose(applyMiddleware(...middleware), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+//     );
+// } else {
+//     store = createStore (
+//         reducers,
+//         initialState,
+//         compose(applyMiddleware(...middleware))
+//     )
+// }
+
+
+
+
 
 
 // const store = createStore (
-//     userReducer,
+//     reducers,
 //     initialState,
-//     applyMiddleware(thunk)
+//     compose(applyMiddleware(...middleware), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 // )
 
-export default store;
+// export default store;
 
 
 
@@ -91,7 +140,6 @@ export default store;
 //         // window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
 // );
 
-// export default store;
 
 
 

@@ -2,6 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 
+//fonts
+// import './fonts/Belleza/Belleza-Regular.ttf';
+// import './fonts/Merryweather/Merriweather-Black.ttf'; 
+// import './fonts/Merryweather/Merriweather-BlackItalic.ttf';
+// import './fonts/Merryweather/Merriweather-BoldItalic.ttf';
+// import './fonts/Merryweather/Merriweather-Bold.ttf';
+// import './fonts/Merryweather/Merriweather-Italic.ttf';
+// import './fonts/Merryweather/Merriweather-Light.ttf';
+// import './fonts/Merryweather/Merriweather-LightItalic.ttf';
+// import './fonts/Merryweather/Merriweather-Regular.ttf';
+
 
 ReactDOM.render(
   <React.StrictMode>
