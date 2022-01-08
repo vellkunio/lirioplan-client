@@ -7,8 +7,16 @@ body{
   /* background: linear-gradient(180deg, #808079 0%, #898A85 10.94%, #737470 24.92%, #000000 100%); */
   overflow-x: hidden;
 }
+html{
+  background-color: #000000;
+}
+
 
 .mainDiv{
+  background: linear-gradient(180deg, #808079 0%, #898A85 10.94%, #737470 24.92%, #000000 100%);
+}
+
+.desktopMainDiv {
   background: linear-gradient(180deg, #808079 0%, #898A85 10.94%, #737470 24.92%, #000000 100%);
 }
 
