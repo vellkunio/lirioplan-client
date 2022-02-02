@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useTransition, animated, config } from '@react-spring/web'
+import { useTransition, animated } from '@react-spring/web'
 import styles from './styles.module.css'
 import { Link } from 'react-router-dom';
 
@@ -147,70 +147,6 @@ export default function App() {
     </div>
   )
 }
-
-{/* <div className="flex fill center">
-      {transitions((style, i) => (
-        <animated.div
-          className={styles.bg}
-          style={{
-            ...style,
-            backgroundImage: `url(${slides[i]})`,
-            // backgroundImage: `url(https://images.unsplash.com/${slides[i]}?w=1920&q=80&auto=format&fit=crop)`,
-            height: '715px'
-          }}
-        />
-      ))} */}
-
-
-// import React, { useState, useEffect } from 'react'
-// import { useTransition, animated, config } from 'react-spring'
-// import style from './stylesTransition.css'
-
-// const slides = [
-//   { id: 0, url: 'photo-1544511916-0148ccdeb877?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1901&q=80i' },
-//   { id: 1, url: 'photo-1544572571-ab94fd872ce4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1534&q=80' },
-//   { id: 2, url: 'reserve/bnW1TuTV2YGcoh1HyWNQ_IMG_0207.JPG?ixlib=rb-1.2.1&w=1534&q=80' },
-//   { id: 3, url: 'photo-1540206395-68808572332f?ixlib=rb-1.2.1&w=1181&q=80' },
-// ]
-
-// const FrontImageTransition = () => {
-
-
-//   const [index, set] = useState(0)
-//   const transitions = useTransition(index, {
-//     key: index,
-//     from: { opacity: 0 },
-//     enter: { opacity: 1 },
-//     leave: { opacity: 0 },
-//     config: { duration: 2000 },
-//   })
-//   useEffect(() => void setInterval(() => set(state => (state + 1) % 4), 3000), [])
-
-//   const fragment = transitions((style, item ) => {
-//     return <animated.div
-//     className="bg"
-//     style={{ backgroundImage: `url(https://images.unsplash.com/${slides[item].url}&auto=format&fit=crop)` }}
-//   />;
-//   });
-
-//   return (
-//     <>
-//     <div>{fragment}</div>
-//     </>
-//   )
-
-// }
-
-// export default FrontImageTransition
-
-
-
-
-
-
-
-
-
 
 
 

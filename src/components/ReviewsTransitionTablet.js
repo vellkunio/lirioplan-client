@@ -117,7 +117,7 @@ class ReviewsTransitionTablet extends Component {
                 <div style={{marginLeft: 'auto', marginRight: 'auto'}}>
                 <div style={{
                   borderRadius: '50%', width: '5px', height: '5px',
-                  backgroundColor: 'white', opacity: '100%',
+                  backgroundColor: 'white',
                   opacity: currentReview === 0 ? '100%' : '50%',
                   marginLeft: '3px', marginRight: '3px', display: 'inline-block'
                 }}> </div>
@@ -129,7 +129,7 @@ class ReviewsTransitionTablet extends Component {
                 }}></div>
                 <div style={{
                   borderRadius: '50%', width: '5px', height: '5px',
-                  backgroundColor: 'white', opacity: '100%',
+                  backgroundColor: 'white',
                   opacity: currentReview === 2 ? '100%' : '50%',
                   marginLeft: '3px', marginRight: '3px', display: 'inline-block'
                 }}>

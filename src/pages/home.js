@@ -2,26 +2,17 @@ import React, { Component } from 'react';
 import AOS from 'aos';
 import '../App.css'
 
-import anime from 'animejs';
-
-import { useTransition, animated } from '@react-spring/web'
-
 import FrontImageTransition from '../components/FrontImageTransition'
 import FrontImageTransitionDesktop from '../components/FrontImageTransitionDesktop'
 import ReviewsTransitionDesktop from '../components/ReviewsTransitionDesktop'
 import ReviewsTransitionTablet from '../components/ReviewsTransitionTablet'
 import ImagesCarousel from '../components/ImagesCarousel'
-import NumberCount from '../components/NumberCount'
 
 import FrontPic1 from '../images/FrontPicture1.png';
 import FrontPic2 from '../images/FrontPicture2.png';
 import FrontPic3 from '../images/FrontPicture3.png';
 import FrontPic4 from '../images/FrontPicture4.png';
 import FrontPic5 from '../images/FrontPicture5.png';
-import bracketTop from '../images/bracketTop.png';
-import bracketBtm from '../images/bracketBtm.png';
-import bracketTopBlack from '../images/bracketTopBlack.png';
-import bracketBtmBlack from '../images/bracketBtmBlack.png';
 import smallHorizontalLine from '../images/smallHorizontalLine.png';
 import check from '../images/check.png';
 import clock from '../images/clock.png';
@@ -51,7 +42,6 @@ import LineDeviderDesktop from '../images/LineDeviderDesktop.png'
 //mui stuff
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
-import ImagesCarouselMobile from '../components/ImagesCarouselMobile';
 
 
 // tips
@@ -141,9 +131,7 @@ class home extends Component {
     render() {
 
         const windowWidth=window.screen.availWidth;
-        console.log(windowWidth);
         const isMac = navigator.platform === 'MacIntel' ? true : false;
-        console.log(isMac + 'ismac?')
 
         let isMobile = false;
         let isDesktop = false;
@@ -167,9 +155,11 @@ class home extends Component {
             isTablet = false;
         }
 
-        console.log('Mobile is: ' + isMobile);
-        console.log('Desktop is: ' + isDesktop);
-        console.log('Tablet is: ' + isTablet);
+        // console.log(windowWidth);
+        // console.log('Is mac? ' + isMac)
+        // console.log('Mobile is: ' + isMobile);
+        // console.log('Desktop is: ' + isDesktop);
+        // console.log('Tablet is: ' + isTablet);
 
         return (
 
@@ -842,8 +832,6 @@ class home extends Component {
                 EXAMPLES
             </h2>
 
-            {/* <ImagesCarouselMobile /> */}
-
             <div>
             
                 <img 
@@ -1259,7 +1247,7 @@ class home extends Component {
             are the property of their respective owners.
             <br></br>
             Made by 
-            <a href="https://vilkun.software" target="_blank" style={{
+            <a href="https://vilkun.software" target="_blank" rel="noreferrer" style={{
                 color: 'white'
             }}> Vellkunio </a>
         </p>
@@ -1421,7 +1409,7 @@ class home extends Component {
                 </div>
 
                     </Grid>
-                    <Grid item xs={5} alignItems='center' direction="column" justify="center" >
+                    <Grid item xs={5} alignItems='center' justify="center" >
                     
                     {/* Circles */}
                     <div styles={{
@@ -2103,7 +2091,7 @@ class home extends Component {
             are the property of their respective owners.
             <br></br>
             Made by 
-            <a href="https://vilkun.software" target="_blank" style={{
+            <a href="https://vilkun.software" target="_blank" rel="noreferrer" style={{
                 color: 'white'
             }}> Vellkunio </a>
         </p>
@@ -2907,7 +2895,7 @@ class home extends Component {
             are the property of their respective owners.
             <br></br>
             Made by 
-            <a href="https://vilkun.software" target="_blank" style={{
+            <a href="https://vilkun.software" target="_blank" rel="noreferrer" style={{
                 color: 'white'
             }}> Vellkunio </a>
         </p>

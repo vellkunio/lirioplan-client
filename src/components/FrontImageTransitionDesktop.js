@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useTransition, animated, config } from '@react-spring/web'
+import { useTransition, animated } from '@react-spring/web'
 import styles from './styles.module.css'
 import { Link } from 'react-router-dom';
 

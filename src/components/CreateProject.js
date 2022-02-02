@@ -17,9 +17,7 @@ import Alert from '@mui/material/Alert';
 
 //MUI Dialog stuff
 import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
 
@@ -280,7 +278,7 @@ export class CreateProject extends Component {
             variant="outlined" 
             color="success" 
             style={{marginTop: "25px"}}
-            disabled={this.state.loading || userStatus != 'admin'}
+            disabled={this.state.loading || userStatus !== 'admin'}
             >
             <Typography variant="subtitle2">Done</Typography>
             </Button>

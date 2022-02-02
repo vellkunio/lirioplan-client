@@ -13,11 +13,9 @@ import InputAdornment from '@mui/material/InputAdornment';
 import Checkbox from '@mui/material/Checkbox';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import CircularProgress from '@mui/material/CircularProgress';
 import LinearProgress from '@mui/material/LinearProgress';
 // import DeleteProject from './DeleteProject';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
-import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 
 
 //MUI Dialog stuff
@@ -164,7 +162,7 @@ class Project extends Component {
             project: {
                 projectId, bossCompany, address, createdAt, isFinished, isFullyPaid, isStarted,
                 makeMoney, spendMoney, room, size, userHandle },
-            user: {authenticated, credentials: {handle, userStatus}} 
+            user: {credentials: {userStatus}} 
         } = this.props;
         const { errors, loadingForEdit, loadingForDelete } = this.state;
 
@@ -396,7 +394,7 @@ return (
                         </DialogContentText>
                     </DialogContent>
                     <DialogActions>
-                        <Button  variant="outlined" disabled={userStatus != 'admin'} style={{color: 'red'}}
+                        <Button  variant="outlined" disabled={userStatus !== 'admin'} style={{color: 'red'}}
                             onClick={this.handleDeleteProject}
                             // startIcon={<DeleteOutlineIcon />}
                             >
