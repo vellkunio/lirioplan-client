@@ -29,6 +29,7 @@ class signup extends Component {
             password: '',
             confirmPassword: '',
             handle: '',
+            code: '',
             errors: {}
         }
     }
@@ -50,7 +51,8 @@ class signup extends Component {
             email: this.state.email,
             password: this.state.password,
             confirmPassword: this.state.confirmPassword,
-            handle: this.state.handle
+            handle: this.state.handle,
+            code: this.state.code
         }
 
         this.props.signupUser(newUserData, this.props.history);
@@ -91,12 +93,15 @@ class signup extends Component {
                         <TextField id="password" name="password" type="password" label="Password" className={classes.TextField}
                                     value={this.state.password} onChange={this.handleChange} helperText={errors.password}
                                     error={errors.password ? true : false} fullWidth/>
-                        <TextField id="confirmPassword" name="confirmPassword" type="confirmPassword" label="Confirm Password" className={classes.TextField}
+                        <TextField id="confirmPassword" name="confirmPassword" type="Password" label="Confirm Password" className={classes.TextField}
                                     value={this.state.confirmPassword} onChange={this.handleChange} helperText={errors.confirmPassword}
                                     error={errors.confirmPassword ? true : false} fullWidth/>
                         <TextField id="handle" name="handle" type="handle" label="Handle" className={classes.handle}
                                     value={this.state.handle} onChange={this.handleChange} helperText={errors.handle}
                                     error={errors.handle ? true : false} fullWidth/>
+                        <TextField id="code" name="code" type="code" label="Code" className={classes.code}
+                                    value={this.state.code} onChange={this.handleChange} helperText={errors.code}
+                                    error={errors.code ? true : false} fullWidth/>
                         {errors.general && (
                             <Typography variant="body2" className={classes.customError}>
                                 {errors.general}

@@ -79,6 +79,11 @@ class Navbar extends Component {
                     ) : (
                         <Fragment>
                         <Button color="inherit" component={Link} to="/login">Login</Button>
+                        <Link to="/">
+                            <MyButton tip="Back to main page" >
+                                <HomeIcon fontSize="large" style={{color:'#e9e8ed'}}/>
+                            </MyButton>
+                        </Link>
                         <Button color="inherit" component={Link} to="/signup">Signup</Button>
                         
                         </Fragment>

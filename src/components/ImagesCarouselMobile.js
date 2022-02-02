@@ -11,7 +11,7 @@ import desktopExample6 from '../images/desktopExample6.jpg'
 import desktopExample7 from '../images/desktopExample7.jpg'
 
 
-class ImagesCarousel extends Component {
+class ImagesCarouselMobile extends Component {
 
 
     render(){
@@ -20,53 +20,63 @@ class ImagesCarousel extends Component {
         <div>
 
             <div className='wrapper'>
-            <div className='carousel'>
+            <div className='carousel' style={{marginLeft: 'auto', marginRight: 'auto', alignItems: 'center', 
+                                            textAlign: 'center'}}>
 
             <div className='carousel__item'>
                 <img src={desktopExample1} alt="example1"
-                style={{width: '300px', margin: '-70px'}}
+                style={{width: '300px', 
+                marginLeft: 'auto', marginRight: 'auto', marginTop: '-70px', marginBottom: '-70px' }}
                 />
             </div>
 
             <div className='carousel__item'>
                 <img src={desktopExample2} alt="example1"
-                style={{width: '300px', margin: '-70px'}}
+                style={{width: '300px',
+                marginLeft: 'auto', marginRight: 'auto', marginTop: '-70px', marginBottom: '-70px'}}
                 />
             </div>
 
             <div className='carousel__item'>
                 <img src={desktopExample3} alt="example1"
-                style={{width: '300px', margin: '-70px'}}
+                style={{width: '300px',
+                marginLeft: 'auto', marginRight: 'auto', marginTop: '-70px', marginBottom: '-70px'}}
                 />
             </div>
             <div className='carousel__item'>
                 <img src={desktopExample4} alt="example1"
-                style={{width: '300px', margin: '-70px'}}
+                style={{width: '300px',
+                marginLeft: 'auto', marginRight: 'auto', marginTop: '-70px', marginBottom: '-70px'}}
                 />
             </div>
             <div className='carousel__item'>
                 <img src={desktopExample5} alt="example1"
-                style={{width: '300px', margin: '-70px'}}
+                style={{width: '300px',
+                marginLeft: 'auto', marginRight: 'auto', marginTop: '-70px', marginBottom: '-70px'}}
                 />
             </div>
             <div className='carousel__item'>
                 <img src={desktopExample6} alt="example1"
-                style={{width: '300px', margin: '-70px'}}
+                style={{width: '300px',
+                marginLeft: 'auto', marginRight: 'auto', marginTop: '-70px', marginBottom: '-70px'}}
                 />
             </div>
             <div className='carousel__item'>
             <img src={desktopExample7} alt="example1"
-                style={{width: '300px', margin: '-70px'}}
+                style={{width: '300px',
+                marginLeft: 'auto', marginRight: 'auto', marginTop: '-70px', marginBottom: '-70px'}}
                 />
             </div>
             <div className='carousel__item'>
             <img src={desktopExample2} alt="example1"
-                style={{width: '300px', margin: '-70px'}}
+                style={{width: '300px',
+                marginLeft: 'auto', marginRight: 'auto', marginTop: '-70px', marginBottom: '-70px'}}
                 />
             </div>
             <div className='carousel__item'>
             <img src={desktopExample4} alt="example1"
-                style={{width: '300px', margin: '-70px'}}
+                style={{width: '300px',
+                marginLeft: 'auto', marginRight: 'auto', marginTop: '-70px', marginBottom: '-70px'}}
                 />
             </div>
             
@@ -79,4 +89,4 @@ class ImagesCarousel extends Component {
 
 }
 
-export default ImagesCarousel
+export default ImagesCarouselMobile
