@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-import styles from './styles.module.css'
-
-import Button from '@mui/material/Button';
 
 
 // const reviews = [
@@ -161,7 +158,7 @@ class ReviewsTransitionDesktop extends Component {
                 <div style={{marginLeft: 'auto', marginRight: 'auto'}}>
                 <div style={{
                   borderRadius: '50%', width: '5px', height: '5px',
-                  backgroundColor: 'white', opacity: '100%',
+                  backgroundColor: 'white',
                   opacity: currentReview === 0 ? '100%' : '50%',
                   marginLeft: '3px', marginRight: '3px', display: 'inline-block'
                 }}> </div>
@@ -173,7 +170,7 @@ class ReviewsTransitionDesktop extends Component {
                 }}></div>
                 <div style={{
                   borderRadius: '50%', width: '5px', height: '5px',
-                  backgroundColor: 'white', opacity: '100%',
+                  backgroundColor: 'white',
                   opacity: currentReview === 2 ? '100%' : '50%',
                   marginLeft: '3px', marginRight: '3px', display: 'inline-block'
                 }}>
