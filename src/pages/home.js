@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import AOS from 'aos';
-// import { Transition, TransitionGroup, CSSTransition } from "react-transition-group";
 import '../App.css'
 
 import anime from 'animejs';
@@ -10,6 +9,7 @@ import { useTransition, animated } from '@react-spring/web'
 import FrontImageTransition from '../components/FrontImageTransition'
 import FrontImageTransitionDesktop from '../components/FrontImageTransitionDesktop'
 import ReviewsTransitionDesktop from '../components/ReviewsTransitionDesktop'
+import ReviewsTransitionTablet from '../components/ReviewsTransitionTablet'
 import ImagesCarousel from '../components/ImagesCarousel'
 import NumberCount from '../components/NumberCount'
 
@@ -51,6 +51,7 @@ import LineDeviderDesktop from '../images/LineDeviderDesktop.png'
 //mui stuff
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
+import ImagesCarouselMobile from '../components/ImagesCarouselMobile';
 
 
 // tips
@@ -141,6 +142,8 @@ class home extends Component {
 
         const windowWidth=window.screen.availWidth;
         console.log(windowWidth);
+        const isMac = navigator.platform === 'MacIntel' ? true : false;
+        console.log(isMac + 'ismac?')
 
         let isMobile = false;
         let isDesktop = false;
@@ -153,11 +156,11 @@ class home extends Component {
             isDesktop = false;
             isTablet = false;
         } 
-        // else if (windowWidth < 1366 && windowWidth >= 580  ){
-        //     isMobile = false;
-        //     isDesktop = false;
-        //     isTablet = true;
-        // } 
+        else if (windowWidth < 1366 && windowWidth >= 580  ){
+            isMobile = false;
+            isDesktop = false;
+            isTablet = true;
+        } 
         else {
             isMobile = false;
             isDesktop = true;
@@ -352,7 +355,6 @@ class home extends Component {
 
                     
                 </div>
-                {/* whiteSpace: 'nowrap', overflowX: 'auto', overflowY: 'hidden' */}
                 
 
             {/* Cards */}
@@ -587,9 +589,9 @@ class home extends Component {
                             }}>clients</p>
 
                             <div style={{
-                                display: 'block', width: '9px', height: '9px',
+                                display: 'block', width: '8px', height: '8px',
                                 borderRadius: '50%', marginLeft: 'auto', marginRight: 'auto',
-                                backgroundColor: "white", marginTop: '51px'
+                                backgroundColor: "white", marginTop: '48px'
                             }}>
                             </div>
 
@@ -635,9 +637,9 @@ class home extends Component {
                             }}>projects</p>
 
                             <div style={{
-                                display: 'block', width: '9px', height: '9px',
+                                display: 'block', width: '8px', height: '8px',
                                 borderRadius: '50%', marginLeft: 'auto', marginRight: 'auto',
-                                backgroundColor: "black", marginTop: '51px'
+                                backgroundColor: "black", marginTop: '48px'
                             }}>
                             </div>
 
@@ -672,9 +674,9 @@ class home extends Component {
                             }}>employees</p>
 
                             <div style={{
-                                display: 'block', width: '9px', height: '9px',
+                                display: 'block', width: '8px', height: '8px',
                                 borderRadius: '50%', marginLeft: 'auto', marginRight: 'auto',
-                                backgroundColor: "white", marginTop: '51px'
+                                backgroundColor: "white", marginTop: '48px'
                             }}>
                             </div>
 
@@ -840,42 +842,48 @@ class home extends Component {
                 EXAMPLES
             </h2>
 
-            <img 
-            data-aos="zoom-out-up"
-            data-aos-anchor-placement="center-bottom"
-            src={Example1} alt="Example Bathroom"
-                style={{display: 'block', marginLeft: 'auto',
-                marginRight: 'auto', padding: '0px', width: '289px',
-                textAlign: 'center',
-                left: '0', right: '0', marginTop: '40px'
-                }}
-            />
-            <img 
-            data-aos="zoom-out-up"
-            data-aos-anchor-placement="center-bottom"
-            src={Example2} alt="Example Bathroom"
-                style={{display: 'block', marginLeft: 'auto',
-                marginRight: 'auto', padding: '0px', width: '289px',
-                textAlign: 'center',
-                left: '0', right: '0', marginTop: '40px'
-                }}
-            />
-            <img 
-            data-aos="zoom-out-up"
-            data-aos-anchor-placement="center-bottom"
-            src={Example3} alt="Example Bathroom"
-                style={{display: 'block', marginLeft: 'auto',
-                marginRight: 'auto', padding: '0px', width: '289px',
-                textAlign: 'center',
-                left: '0', right: '0', marginTop: '40px'
-                }}
-            />
+            {/* <ImagesCarouselMobile /> */}
+
+            <div>
+            
+                <img 
+                data-aos="zoom-out-up"
+                data-aos-anchor-placement="center-bottom"
+                src={Example1} alt="Example Bathroom"
+                    style={{display: 'block', marginLeft: 'auto',
+                    marginRight: 'auto', padding: '0px', width: '289px',
+                    textAlign: 'center',
+                    left: '0', right: '0', marginTop: '40px'
+                    }}
+                />
+                <img 
+                data-aos="zoom-out-up"
+                data-aos-anchor-placement="center-bottom"
+                src={Example2} alt="Example Bathroom"
+                    style={{display: 'block', marginLeft: 'auto',
+                    marginRight: 'auto', padding: '0px', width: '289px',
+                    textAlign: 'center',
+                    left: '0', right: '0', marginTop: '40px'
+                    }}
+                />
+                <img 
+                data-aos="zoom-out-up"
+                data-aos-anchor-placement="center-bottom"
+                src={Example3} alt="Example Bathroom"
+                    style={{display: 'block', marginLeft: 'auto',
+                    marginRight: 'auto', padding: '0px', width: '289px',
+                    textAlign: 'center',
+                    left: '0', right: '0', marginTop: '40px'
+                    }}
+                />
+            
+             </div>
 
             {/* Devider */}
             <img src={LineDevider} alt="Devider"
                 style={{display: 'block', marginLeft: 'auto',
                 marginRight: 'auto', padding: '0px', marginTop: '64px',
-                pointerEvents: 'none'
+                pointerEvents: 'none', width: '286px'
                 }}
             />
 
@@ -965,7 +973,7 @@ class home extends Component {
         <img src={LineDevider} alt="Devider"
             style={{display: 'block', marginLeft: 'auto',
             marginRight: 'auto', padding: '0px', marginTop: '40px',
-            pointerEvents: 'none'
+            pointerEvents: 'none', width: '286px'
             }}
         />
 
@@ -1250,7 +1258,10 @@ class home extends Component {
             © 2021 Lirioplan Ltd. Trademarks and brands
             are the property of their respective owners.
             <br></br>
-            Made by Vellkunio
+            Made by 
+            <a href="https://vilkun.software" target="_blank" style={{
+                color: 'white'
+            }}> Vellkunio </a>
         </p>
 
 
@@ -1266,11 +1277,79 @@ class home extends Component {
                 <FrontImageTransitionDesktop />
                 </div>
 
+                    { isMac ? 
+                    <div></div> : <div>
+
+                        <div style={{
+                            width: '839px', height: '839px', position:' absolute',
+                            left: '300px', background: 'rgba(55, 203, 185, 0.05)',
+                            zIndex: '0', WebkitFilter: 'blur(100px)', borderRadius: '30%',
+                            top: '1321px'
+                        }}>
+                        </div>
+                        <div style={{
+                            width: '800px', height: '1000px', position:' absolute',
+                            right: '0px', background: 'rgba(55, 61, 203, 0.12)',
+                            zIndex: '0', WebkitFilter: 'blur(120px)', borderRadius: '30%',
+                            top: '700px'
+                        }}>
+                        </div>
+                        <div style={{
+                            width: '780px', height: '780px', position:' absolute',
+                            left: '-367px', background: 'rgba(201, 212, 106, 0.10)',
+                            zIndex: '0', WebkitFilter: 'blur(120px)', borderRadius: '30%',
+                            top: '1393px'
+                        }}>
+                        </div>
+                        <div style={{
+                            width: '1202px', height: '1202px', position:' absolute',
+                            left: '-582px', background: 'rgba(55, 61, 203, 0.08)',
+                            zIndex: '0', WebkitFilter: 'blur(150px)', borderRadius: '30%',
+                            top: '2321px'
+                        }}>
+                        </div>
+                    </div>
+
+                    }
+
+
+                {/* BGElipse */}
+                {/* <div>
+                    <div style={{
+                        width: '839px', height: '839px', position:' absolute',
+                        left: '300px', background: 'rgba(55, 203, 185, 0.05)',
+                        zIndex: '0', WebkitFilter: 'blur(100px)', borderRadius: '30%',
+                        top: '1321px'
+                    }}>
+                    </div>
+                    <div style={{
+                        width: '800px', height: '1000px', position:' absolute',
+                        right: '0px', background: 'rgba(55, 61, 203, 0.12)',
+                        zIndex: '0', WebkitFilter: 'blur(120px)', borderRadius: '30%',
+                        top: '700px'
+                    }}>
+                    </div>
+                    <div style={{
+                        width: '780px', height: '780px', position:' absolute',
+                        left: '-367px', background: 'rgba(201, 212, 106, 0.10)',
+                        zIndex: '0', WebkitFilter: 'blur(120px)', borderRadius: '30%',
+                        top: '1393px'
+                    }}>
+                    </div>
+                    <div style={{
+                        width: '1202px', height: '1202px', position:' absolute',
+                        left: '-582px', background: 'rgba(55, 61, 203, 0.08)',
+                        zIndex: '0', WebkitFilter: 'blur(150px)', borderRadius: '30%',
+                        top: '2321px'
+                    }}>
+                    </div>
+                </div> */}
+
                 <img src={TopDesktopDevider} alt="devider"
                     style={{display: 'block', marginLeft: 'auto',
                     marginRight: 'auto', padding: '0px', width: '1044px',
                     position: 'absolute', textAlign: 'center',
-                    left: '0', right: '0', marginTop: '800px',
+                    left: '0', right: '0', marginTop: '117vh',
                     pointerEvents: 'none'
                     }}
                 />
@@ -1283,7 +1362,7 @@ class home extends Component {
                         <div
                             style={{ textAlign:"center",  fontWeight:"400",
                             fontStyle:"italic", fontSize: '24px', letterSpacing: "4px",
-                            opacity: '80%', paddingTop: '781px'
+                            opacity: '80%', paddingTop: '114vh'
                             }} >
                             <h1
                             data-aos="fade-up-right"
@@ -1318,7 +1397,7 @@ class home extends Component {
                         <div className="font-merriweather" style={{
                             textAlign:"center",  fontWeight:"400",
                             fontStyle:'italic', fontSize:'60px',
-                            letterSpacing: '4px', marginTop:'165px'
+                            letterSpacing: '4px', marginTop:'180px'
                         }}>
                             MORE
                         </div>
@@ -1342,7 +1421,7 @@ class home extends Component {
                 </div>
 
                     </Grid>
-                    <Grid item xs={5}>
+                    <Grid item xs={5} alignItems='center' direction="column" justify="center" >
                     
                     {/* Circles */}
                     <div styles={{
@@ -1354,7 +1433,8 @@ class home extends Component {
                         display: 'block', width: '200px', height: '200px',
                         borderRadius: '50%', borderColor: 'white', borderStyle: 'solid',
                         borderWidth: '2px', 
-                        marginTop: '780px'
+                        // marginTop: '780px'
+                        marginTop: '114vh'
                     }}>
 
                         <div style={{textAlign: 'center'}}>
@@ -1386,15 +1466,15 @@ class home extends Component {
                     </div>
 
                     {/* Circle Sides */}
-                    <img src={CircleSides} alt="line"
-                        style={{display: 'block', marginLeft: 'auto',
-                        // marginRight: '369px', padding: '0px', width: '297px',
-                        marginRight: '312px', padding: '0px', width: '297px',
-                        position: 'absolute', textAlign: 'center',
-                        left: '0', right: '0', marginTop: '36px', pointerEvents: 'none'
+                    {/* {windowWidth === 1920 && ( */}
+                    <img src={CircleSides} alt="circle sides"
+                        style={{
+                        // marginRight: '22.4vw', padding: '0px', width: '297px',
+                        width: '297px', marginLeft: '-47px',
+                        position: 'absolute', marginTop: '36px', pointerEvents: 'none'
                         }}
                     />
-
+                    {/* )} */}
 
 
 
@@ -1750,9 +1830,10 @@ class home extends Component {
             className="font-merriweather"
             style={{
             textAlign:"center",  fontWeight:"400",
-            fontSize:'16px', color: 'white',
-            width: '730px', marginLeft: 'auto', marginRight: 'auto',
-            letterSpacing: '0.17em', marginTop:'8px', lineHeight: '160%'
+            fontSize:'16px', color: 'rgba(256,256,256,8)',
+            width: '800px', marginLeft: 'auto', marginRight: 'auto',
+            letterSpacing: '0.17em', marginTop:'24px', lineHeight: '180%',
+            marginBottom: '50px'
             }}>
                 We have been installing tiles for over 2 decades now and know everything from making perfect 
                 color mach of filling between tiles to perfect level alignment on the wall. We have friendly 
@@ -2021,7 +2102,814 @@ class home extends Component {
             © 2021 Lirioplan Ltd. Trademarks and brands
             are the property of their respective owners.
             <br></br>
-            Made by Vellkunio
+            Made by 
+            <a href="https://vilkun.software" target="_blank" style={{
+                color: 'white'
+            }}> Vellkunio </a>
+        </p>
+
+                
+                
+            </div>
+        )}
+
+        
+        {isTablet && (
+            <div className='desktopMainDiv'>
+                <div className='MainDesktopDiv'>
+                <FrontImageTransitionDesktop />
+                </div>
+
+                {/* BGElipse */}
+                <div>
+                    <div style={{
+                        width: '839px', height: '839px', position:' absolute',
+                        left: '0px', background: 'rgba(55, 203, 185, 0.05)',
+                        zIndex: '0', WebkitFilter: 'blur(100px)', borderRadius: '30%',
+                        top: '1321px'
+                    }}>
+                    </div>
+                    <div style={{
+                        width: '800px', height: '1000px', position:' absolute',
+                        left: '0px', background: 'rgba(55, 61, 203, 0.12)',
+                        zIndex: '0', WebkitFilter: 'blur(120px)', borderRadius: '30%',
+                        top: '100vh'
+                    }}>
+                    </div>
+                    <div style={{
+                        width: '780px', height: '780px', position:' absolute',
+                        left: '-367px', background: 'rgba(201, 212, 106, 0.10)',
+                        zIndex: '0', WebkitFilter: 'blur(120px)', borderRadius: '30%',
+                        top: '1393px'
+                    }}>
+                    </div>
+                    <div style={{
+                        width: '1202px', height: '1202px', position:' absolute',
+                        left: '-582px', background: 'rgba(55, 61, 203, 0.08)',
+                        zIndex: '0', WebkitFilter: 'blur(150px)', borderRadius: '30%',
+                        top: '2321px'
+                    }}>
+                    </div>
+                </div>
+            {/* 
+                <img src={TopDesktopDevider} alt="devider"
+                    style={{display: 'block', marginLeft: 'auto',
+                    marginRight: 'auto', padding: '0px', width: '1044px',
+                    position: 'absolute', textAlign: 'center',
+                    left: '0', right: '0', marginTop: '800px',
+                    pointerEvents: 'none'
+                    }}
+                /> */}
+
+                <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+                    <Grid item xs={7}>
+                    <div style={{
+                        marginLeft:'100px'
+                    }}>
+                        <div
+                            style={{ textAlign:"center",  fontWeight:"400",
+                            fontStyle:"italic", fontSize: '24px', letterSpacing: "4px",
+                            opacity: '80%', paddingTop: '105vh'
+                            }} >
+                            <h1
+                            data-aos="fade-up-right"
+                            data-aos-anchor-placement="center-bottom"
+                            className="font-merriweather" >
+                                LIRIOPLAN
+                            </h1>
+                            </div>
+
+                            <div style={{ textAlign:"center",  fontWeight:"400",
+                            fontStyle:"normal", fontSize: '16px', letterSpacing: "4px",
+                            marginTop: "16px", lineHeight: '180%', width: '312px',
+                            marginLeft: "auto", marginRight: 'auto'
+                            }} >
+                            <p
+                            data-aos="fade-up-left"
+                            data-aos-anchor-placement="center-bottom"
+                            className="font-merriweather" >
+                            Most professional tile
+                            installation in Ontario. We
+                            design and install inside
+                            and outside tile and
+                            decorative rocks. Do you
+                            need to intall or upgrade
+                            tile? Let professionals
+                            take care of it!
+                            </p>
+                        </div>
+
+                    {/* More and line */}
+                    <div>
+                        <div className="font-merriweather" style={{
+                            textAlign:"center",  fontWeight:"400",
+                            fontStyle:'italic', fontSize:'60px',
+                            letterSpacing: '4px', marginTop:'110px'
+                        }}>
+                            MORE
+                        </div>
+
+                        {/* line here */}
+                        <img src={LineDeviderDesktop} alt="line"
+                            style={{display: 'block', marginLeft: 'auto',
+                            marginRight: 'auto', padding: '0px',
+                            pointerEvents: 'none', width: '210px'
+                            }}
+                        />
+
+                        <div className="font-merriweather" style={{
+                            textAlign:"center",  fontWeight:"400",
+                            fontStyle:'italic', fontSize:'24px',
+                            letterSpacing: '4px', marginTop:'8px'
+                        }}>
+                            than just tile
+                        </div>
+                    </div>
+                </div>
+
+                    </Grid>
+                    <Grid item xs={5}>
+                    
+                    {/* Circles */}
+                    <div styles={{
+                        marginTop: '1000px'
+                    }}>
+                            
+                    {/* Circle1 */}
+                    <div style={{
+                        display: 'block', width: '200px', height: '200px',
+                        borderRadius: '50%', borderColor: 'white', borderStyle: 'solid',
+                        borderWidth: '2px', 
+                        marginTop: '100vh'
+                    }}>
+
+                        <div style={{textAlign: 'center'}}>
+
+                            <p className="font-merriweather" style={{
+                                marginTop: '35px', fontWeight: '400',
+                                fontSize: '32px', opacity: '50%', color: 'white'
+                            }}>+</p>
+                            <p className="font-merriweather" style={{
+                                marginTop: '0px', fontWeight: '400',
+                                fontSize: '32px', color:'white',
+                                letterSpacing: '0.17em',
+                            }}>12.712</p>
+                            <p className="font-merriweather" style={{
+                                marginTop: '8px', fontWeight: '900',
+                                fontSize: '18px', color:'white', opacity: '50%',
+                                letterSpacing: '0.25em',
+                            }}>clients</p>
+
+                            <div style={{
+                                display: 'block', width: '9px', height: '9px',
+                                borderRadius: '50%', marginLeft: 'auto', marginRight: 'auto',
+                                backgroundColor: "white", marginTop: '48px'
+                            }}>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    {/* Circle Sides */}
+                    {/* <img src={CircleSides} alt="line"
+                        style={{display: 'block', marginLeft: 'auto',
+                        // marginRight: '369px', padding: '0px', width: '297px',
+                        marginRight: 'auto', padding: '0px', width: '297px',
+                        position: 'absolute', textAlign: 'center',
+                        left: '0', right: '0', marginTop: '36px', pointerEvents: 'none'
+                        }}
+                    /> */}
+
+
+
+
+                {/* Circle2 */}
+                    <div style={{
+                        display: 'block', width: '200px', height: '200px',
+                        borderRadius: '50%', borderColor: '#22123D', borderStyle: 'solid',
+                        borderWidth: '2px',
+                        marginTop: '32px'
+                    }}>
+
+                        <div style={{textAlign: 'center'}}>
+
+                            <p className="font-merriweather" style={{
+                                marginTop: '35px', fontWeight: '400',
+                                fontSize: '32px', opacity: '50%', color: 'black'
+                            }}>+</p>
+                            <p className="font-merriweather" style={{
+                                marginTop: '0px', fontWeight: '400',
+                                fontSize: '32px', color:'black',
+                                letterSpacing: '0.17em',
+                            }}>12.000</p>
+                            <p className="font-merriweather" style={{
+                                marginTop: '8px', fontWeight: '900',
+                                fontSize: '18px', color:'black', opacity: '50%',
+                                letterSpacing: '0.25em',
+                            }}>projects</p>
+
+                            <div style={{
+                                display: 'block', width: '9px', height: '9px',
+                                borderRadius: '50%', marginLeft: 'auto', marginRight: 'auto',
+                                backgroundColor: "black", marginTop: '48px'
+                            }}>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                {/* Circle3 */}
+                    <div style={{
+                        display: 'block', width: '200px', height: '200px',
+                        borderRadius: '50%', borderColor: 'white', borderStyle: 'solid',
+                        borderWidth: '2px',
+                        marginTop: '32px'
+                    }}>
+
+                        <div style={{textAlign: 'center'}}>
+
+                            <p className="font-merriweather" style={{
+                                marginTop: '35px', fontWeight: '400',
+                                fontSize: '32px', opacity: '50%', color: 'white'
+                            }}>+</p>
+                            <p className="font-merriweather" style={{
+                                marginTop: '0px', fontWeight: '400',
+                                fontSize: '32px', color:'white',
+                                letterSpacing: '0.17em',
+                            }}>49</p>
+                            <p className="font-merriweather" style={{
+                                marginTop: '8px', fontWeight: '900',
+                                fontSize: '18px', color:'white', opacity: '50%',
+                                letterSpacing: '0.25em',
+                            }}>employees</p>
+
+                            <div style={{
+                                display: 'block', width: '9px', height: '9px',
+                                borderRadius: '50%', marginLeft: 'auto', marginRight: 'auto',
+                                backgroundColor: "white", marginTop: '48px'
+                            }}>
+                            </div>
+                        </div>
+                    </div>
+                    {/* Circles section end */}
+                    </div>
+                    </Grid>
+                </Grid>
+
+                {/* Cards */}
+                <div style={{
+                    marginTop: '50px', alignItems: 'center', textAlign: 'center'
+                }}>
+                    {/* Card1 */}
+                    <div
+                    // data-aos="fade-right"
+                    data-aos="fade-up"
+                    // data-aos-anchor-placement="bottom-bottom"
+                    style={{
+                    width: '267px', height: '278px', display: 'inline-block',
+                    marginTop: '40px', marginLeft: '20px', marginRight: '20px',
+                    background: 'linear-gradient(0deg, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25))',
+                    boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)', zIndex: '1',
+                    borderRadius: '10px', WebkitBackdropFilter: 'blur(50px)', backdropFilter: 'blur(50px)'
+                    }}>
+
+                        <img src={check} alt="check"
+                            style={{display: 'block', marginLeft: 'auto',
+                            marginRight: 'auto', padding: '0px', paddingTop: '40px',
+                            width: '45px', pointerEvents: 'none', zIndex: '3'
+                            }}
+                        />
+                        <h3 className="font-merriweather"
+                        style={{
+                        textAlign:"center",  fontWeight:"900",
+                        fontSize:'18px', color: 'white',
+                        letterSpacing: '4px', marginTop:'16px', zIndex: '3'
+                        }}>
+                            Perfection
+                        </h3>
+                        <p className="font-merriweather"
+                        style={{
+                        textAlign:"center",  fontWeight:"400",
+                        fontSize:'13px', color: 'white',
+                        width: '220px', marginLeft: 'auto',marginRight: 'auto',
+                        letterSpacing: '0.17em', marginTop:'24px', lineHeight: '160%', 
+                        zIndex: '3',
+                        }}>
+                            With best quality
+                            installation your house
+                            will make you happy for
+                            over a hundred years
+                        </p>
+
+                    </div>
+
+                    {/* Card2 */}
+                    <div
+                    data-aos="fade-up"
+                    style={{
+                    width: '267px', height: '278px', display: 'inline-block',
+                    marginTop: '40px', marginLeft: '20px', marginRight: '20px',
+                    background: 'linear-gradient(0deg, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25))',
+                    boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+                    borderRadius: '10px', WebkitBackdropFilter: 'blur(50px)', backdropFilter: 'blur(50px)'
+                    }}>
+
+                        <img src={clock} alt="clock"
+                            style={{display: 'block', marginLeft: 'auto',
+                            marginRight: 'auto', padding: '0px', paddingTop: '40px',
+                            width: '45px', pointerEvents: 'none'
+                            }}
+                        />
+                        <h3 className="font-merriweather"
+                        style={{
+                        textAlign:"center",  fontWeight:"900",
+                        fontSize:'18px', color: 'white',
+                        letterSpacing: '4px', marginTop:'16px'
+                        }}>
+                            In time
+                        </h3>
+                        <p className="font-merriweather"
+                        style={{
+                        textAlign:"center",  fontWeight:"400",
+                        fontSize:'13px', color: 'white',
+                        width: '220px', marginLeft: 'auto',marginRight: 'auto',
+                        letterSpacing: '0.17em', marginTop:'24px', lineHeight: '160%'
+                        }}>
+                            Time can be
+                            challenging, but we
+                            know how important it
+                            is to finish in time
+                        </p>
+                    </div>
+
+                    {/* card3 */}
+                    <div
+                    data-aos="fade-up"
+                    style={{
+                    width: '267px', height: '278px', display: 'inline-block',
+                    marginTop: '40px', marginLeft: '20px', marginRight: '20px',
+                    background: 'linear-gradient(0deg, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25))',
+                    boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+                    borderRadius: '10px', WebkitBackdropFilter: 'blur(50px)', backdropFilter: 'blur(50px)'
+                    }}>
+
+                        <img src={warranty} alt="warranty"
+                            style={{display: 'block', marginLeft: 'auto',
+                            marginRight: 'auto', padding: '0px', paddingTop: '40px',
+                            width: '45px', pointerEvents: 'none'
+                            }}
+                        />
+                        <h3 className="font-merriweather"
+                        style={{
+                        textAlign:"center",  fontWeight:"900",
+                        fontSize:'18px', color: 'white',
+                        letterSpacing: '4px', marginTop:'16px'
+                        }}>
+                            Warranty
+                        </h3>
+                        <p className="font-merriweather"
+                        style={{
+                        textAlign:"center",  fontWeight:"400",
+                        fontSize:'13px', color: 'white',
+                        width: '220px', marginLeft: 'auto', marginRight: 'auto',
+                        letterSpacing: '0.17em', marginTop:'24px', lineHeight: '160%'
+                        }}>
+                            Our company is
+                            confident at we do,
+                            that’s why we give
+                            warranty to all of our
+                            clients
+                        </p>
+                    </div>
+
+                    {/* End cards */}
+                </div>
+
+        {/* Benefits */}
+        <div>
+            <h3 className="font-merriweather"
+            style={{
+            textAlign:"center",  fontWeight:"700",
+            fontSize:'32px', color: 'white', opacity: '50%',
+            letterSpacing: '0.2em', marginTop:'64px'
+            }}>
+                BENEFITS
+            </h3>
+
+        <div style={{textAlign: 'center'}}>
+
+            {/* Benefit1 */}
+            <div style={{display: 'inline-block'}}>
+                <h5 
+                data-aos="zoom-in-up"
+                data-aos-anchor-placement="center-bottom"
+                className="font-belleza" style={{
+                    marginTop: '32px', textAlign: 'center', fontWeight: "400",
+                    fontSize: '28px', letterSpacing: '0.17em', opacity: '90%',
+                    color: 'white'
+                }}>
+                    Relax
+                </h5>
+
+                <div 
+                data-aos="zoom-in-up"
+                data-aos-anchor-placement="center-bottom"
+                style={{
+                    height: '1px', width: '100px', backgroundColor: 'black',
+                    marginLeft: 'auto', marginRight: 'auto', marginTop: '16px'
+                }}></div>
+
+                <p 
+                data-aos="zoom-in-up"
+                data-aos-anchor-placement="center-bottom"
+                className="font-merriweather"
+                style={{
+                textAlign:"center",  fontWeight:"400",
+                fontSize:'16px', color: 'black',
+                width: '250px', marginLeft: 'auto', marginRight: 'auto',
+                letterSpacing: '0.17em', marginTop:'8px', lineHeight: '160%'
+                }}>
+                    Put all hard work on us
+                    and enjoy doing what
+                    you love to do
+                </p>
+            </div>
+
+            {/* Benefit2 */}
+            <div style={{display: 'inline-block'}}>
+                <h5
+                data-aos="zoom-in-up"
+                data-aos-anchor-placement="center-bottom"
+                className="font-belleza" style={{
+                    marginTop: '32px', textAlign: 'center', fontWeight: "400",
+                    fontSize: '28px', letterSpacing: '0.17em', opacity: '90%',
+                    color: 'white'
+                }}>
+                    Stand out
+                </h5>
+
+                <div 
+                data-aos="zoom-in-up"
+                data-aos-anchor-placement="center-bottom"
+                style={{
+                    height: '1px', width: '100px', backgroundColor: 'black',
+                    marginLeft: 'auto', marginRight: 'auto', marginTop: '16px'
+                }}></div>
+
+                <p 
+                data-aos="zoom-in-up"
+                data-aos-anchor-placement="center-bottom"
+                className="font-merriweather"
+                style={{
+                textAlign:"center",  fontWeight:"400",
+                fontSize:'16px', color: 'black',
+                width: '250px', marginLeft: 'auto', marginRight: 'auto',
+                letterSpacing: '0.17em', marginTop:'8px', lineHeight: '160%'
+                }}>
+                    Become owner of the
+                    best house in the
+                    neighborhood
+                </p>
+
+                
+            </div>
+
+            {/* Benefit3 */}
+            <div style={{display: 'inline-block'}}>
+            <h5 
+            data-aos="zoom-in-up"
+            data-aos-anchor-placement="center-bottom"
+            className="font-belleza" style={{
+                marginTop: '32px', textAlign: 'center', fontWeight: "400",
+                fontSize: '28px', letterSpacing: '0.17em', opacity: '90%',
+                color: 'white'
+            }}>
+                Get help
+            </h5>
+
+            <div 
+            data-aos="zoom-in-up"
+            data-aos-anchor-placement="center-bottom"
+            style={{
+                height: '1px', width: '100px', backgroundColor: 'black',
+                marginLeft: 'auto', marginRight: 'auto', marginTop: '16px'
+            }}></div>
+
+            <p 
+            data-aos="zoom-in-up"
+            data-aos-anchor-placement="center-bottom"
+            className="font-merriweather"
+            style={{
+            textAlign:"center",  fontWeight:"400",
+            fontSize:'16px', color: 'black',
+            width: '250px', marginLeft: 'auto', marginRight: 'auto',
+            letterSpacing: '0.17em', marginTop:'8px', lineHeight: '160%'
+            }}>
+                Not sure what you
+                want? Pick best with
+                our designers
+            </p>
+        </div>
+
+        </div>
+        {/* End benefits */}
+        </div>
+
+        {/* Why us */}
+        <div>
+
+        <h3 className="font-merriweather"
+        style={{
+        textAlign:"center",  fontWeight:"700",
+        fontSize:'32px', color: 'white', opacity: '50%',
+        letterSpacing: '0.2em', marginTop:'64px'
+        }}>
+            WHY US?
+        </h3>
+
+        <p 
+            data-aos="zoom-in-up"
+            data-aos-anchor-placement="center-bottom"
+            className="font-merriweather"
+            style={{
+            textAlign:"center",  fontWeight:"300",
+            fontSize:'16px', color: 'white',
+            width: '730px', marginLeft: 'auto', marginRight: 'auto',
+            letterSpacing: '0.17em', marginTop:'8px', lineHeight: '180%', marginBottom: ' 30px'
+            }}>
+                We have been installing tiles for over 2 decades now and know everything from making perfect 
+                color mach of filling between tiles to perfect level alignment on the wall. We have friendly 
+                team of best installers in ontario...
+
+
+
+                
+            </p>
+        {/* Why us Ends */}
+        </div>
+
+        <div>
+
+            
+            <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+            <Grid item xs={7}>
+            {/* Also */}
+            <div>
+                <h4 
+                data-aos="zoom-in"
+                data-aos-anchor-placement="center-bottom"
+                className="font-merriweather"
+                style={{
+                textAlign:"center",  fontWeight:"700",
+                fontSize:'32px', color: 'white', opacity: '50%',
+                letterSpacing: '0.2em', marginTop:'32px'
+                }}>
+                    ALSO
+                </h4>
+
+                {/* Devider */}
+                <img src={LineDevider} alt="Devider"
+                    style={{display: 'block', marginLeft: 'auto',
+                    marginRight: 'auto', padding: '0px', marginTop: '40px',
+                    pointerEvents: 'none', width: '150px'
+                    }}
+                />
+
+                {/* Also1 */}
+                <h2 
+                data-aos="zoom-in"
+                data-aos-anchor-placement="center-bottom"
+                className="font-merriweather" style={{
+                opacity: '95%', fontSize: '22px', fontWeight: '400',
+                lineHeight: '28px', letterSpacing: '0.17em', textAlign: 'center',
+                marginTop: '56px', color: 'white'
+                }}>
+                    Top-quality tile
+                </h2>
+
+                <p 
+                data-aos="zoom-in"
+                data-aos-anchor-placement="center-bottom"
+                className="font-merriweather"
+                style={{
+                textAlign:"center",  fontWeight:"400",
+                fontSize:'16px', color: 'white',
+                width: '260px', marginLeft: 'auto', marginRight: 'auto',
+                letterSpacing: '0.17em', marginTop:'24px', lineHeight: '160%',
+                opacity: '80%'
+                }}>
+                    We work only with the
+                    best manufacturers who
+                    proved their quality
+                    after decades, for you, to
+                    feel even more luxury
+                </p>
+
+                {/* devider */}
+                <div style={{
+                    height: '0.5px', width: '139px', backgroundColor: 'black',
+                    marginLeft: 'auto', marginRight: 'auto', marginTop: '40px'
+                }}></div>
+
+                {/* Also2 */}
+                <h2 
+                data-aos="zoom-in"
+                data-aos-anchor-placement="center-bottom"
+                className="font-merriweather" style={{
+                opacity: '95%', fontSize: '22px', fontWeight: '400',
+                lineHeight: '28px', letterSpacing: '0.17em', textAlign: 'center',
+                marginTop: '40px', color: 'white'
+                }}>
+                    Unique Styles
+                </h2>
+
+                <p 
+                data-aos="zoom-in"
+                data-aos-anchor-placement="center-bottom"
+                className="font-merriweather"
+                style={{
+                textAlign:"center",  fontWeight:"400",
+                fontSize:'16px', color: 'white',
+                width: '260px', marginLeft: 'auto', marginRight: 'auto',
+                letterSpacing: '0.17em', marginTop:'24px', lineHeight: '160%',
+                opacity: '80%'
+                }}>
+                    We love doing unique
+                    projects by combining
+                    our expirience and your
+                    wishes
+                </p>
+            </div>
+
+            {/* Reviews */}
+            <div>
+            <h2 className="font-merriweather"
+            style={{
+            textAlign:"center",  fontWeight:"900",
+            fontSize:'32px', color: 'white', opacity: '50%',
+            letterSpacing: '0.2em', marginTop:'32px'
+            }}>
+            REVIEWS
+            </h2>
+
+            <ReviewsTransitionTablet style={{zIndex: 0, marginLeft:'50px'}}/>
+
+
+            {/* Reviews */}
+            </div>
+
+
+            </Grid>
+            <Grid item xs={5}>
+                <ImagesCarousel />
+            </Grid>
+        </Grid>
+
+
+        </div>
+
+        {/* Horizontal line */}
+        <div style={{
+            height: '1px', width:'470px', backgroundColor: 'white',
+            marginLeft: 'auto', marginRight: 'auto', marginTop: '40px', marginBottom: '16px'
+        }}>
+        </div>
+
+        {/* Social media */}
+        <div style={{textAlign: 'center'}}>
+
+            {/* Benefit1 */}
+            <div style={{display: 'inline-block', marginLeft: '30px', marginRight: '30px'}}>
+                <img
+                data-aos="zoom-in-up"
+                data-aos-anchor-placement="center-bottom"
+                src={Instagram} alt="Instagram"
+                    style={{display: 'inline-block', marginLeft: 'auto',
+                    marginRight: 'auto', padding: '0px', height: '50px',
+                    textAlign: 'center', marginTop: '32px',
+                    left: '0', right: '0', opacity: '0.9'
+                    }}
+                />
+            </div>
+            <div style={{display: 'inline-block', marginLeft: '30px', marginRight: '30px'}}>
+                <img
+                data-aos="zoom-in-up"
+                data-aos-anchor-placement="center-bottom"
+                src={Facebook} alt="Facebook"
+                    style={{display: 'inline-block', marginLeft: 'auto',
+                    marginRight: 'auto', padding: '0px', height: '50px',
+                    textAlign: 'center', marginTop: '32px',
+                    left: '0', right: '0', opacity: '0.9'
+                    }}
+                />
+            </div>
+            <div style={{display: 'inline-block', marginLeft: '30px', marginRight: '30px'}}>
+                <img
+                data-aos="zoom-in-up"
+                data-aos-anchor-placement="center-bottom"
+                src={TikTok} alt="TokTok"
+                    style={{display: 'inline-block', marginLeft: 'auto',
+                    marginRight: 'auto', padding: '0px', height: '50px',
+                    textAlign: 'center', marginTop: '32px',
+                    left: '0', right: '0', opacity: '0.9'
+                    }}
+                />
+            </div>
+            </div>
+
+
+        {/* Partners */}
+        <div>
+            <h3 className="font-merriweather"
+            style={{
+            textAlign:"center",  fontWeight:"700",
+            fontSize:'45px', color: 'rgba(255, 255, 255, 0.15)',
+            letterSpacing: '0.83em', marginTop:'40px', lineHeight: '76px'
+            }}>
+                PARTNERS
+            </h3>
+
+        <div style={{textAlign: 'center'}}>
+
+            {/* Partner1 */}
+            <div style={{display: 'inline-block'}}>
+            <img 
+            data-aos="zoom-out-right"
+            data-aos-anchor-placement="center-bottom"
+            src={Partners1} alt="Ironstone Build Logo"
+                style={{display: 'block', marginLeft: '30px',
+                marginRight: '30px', padding: '0px', width: '100px',
+                textAlign: 'center', marginTop: '32px',
+                left: '0', right: '0'
+                }}
+            />
+            </div>
+
+            {/* Benefit2 */}
+            <div style={{display: 'inline-block'}}>
+            <img 
+            data-aos="zoom-out-right"
+            data-aos-anchor-placement="center-bottom"
+            src={Partners2} alt="Ironstone Build Logo"
+                style={{display: 'block', marginLeft: '30px',
+                marginRight: '30px', padding: '0px', width: '100px',
+                textAlign: 'center', marginTop: '32px',
+                left: '0', right: '0'
+                }}
+            />                
+            </div>
+
+            {/* Benefit3 */}
+            <div style={{display: 'inline-block'}}>
+                <img 
+                data-aos="zoom-out-left"
+                data-aos-anchor-placement="center-bottom"
+                src={Partners3} alt="Ironstone Build Logo"
+                    style={{display: 'block', marginLeft: '30px',
+                    marginRight: '30px', padding: '0px', width: '100px',
+                    textAlign: 'center', marginTop: '32px',
+                    left: '0', right: '0'
+                    }}
+                />
+            </div>
+
+
+            {/* Benefit4 */}
+            <div style={{display: 'inline-block'}}>
+                <img 
+                data-aos="zoom-out-left"
+                data-aos-anchor-placement="center-bottom"
+                src={Partners4} alt="Ironstone Build Logo"
+                    style={{display: 'block', marginLeft: '30px',
+                    marginRight: '30px', padding: '0px', width: '100px',
+                    textAlign: 'center', marginTop: '32px',
+                    left: '0', right: '0'
+                    }}
+                />
+            </div>
+
+        </div>
+        {/* End partners */}
+        </div>
+
+        {/* Footer */}
+        <p className="font-belleza"
+        style={{
+        textAlign:"center",  fontWeight:"400",
+        fontSize:'10px', color: 'white', paddingLeft: 'auto', paddingRight: 'auto',
+        letterSpacing: '0.17em', paddingTop:'40px', lineHeight: '12px',
+        background: "#000000", marginLeft: 'auto', marginRight: 'auto', marginBottom: '-80px', paddingBottom: '20px'
+        }}>
+            © 2021 Lirioplan Ltd. Trademarks and brands
+            are the property of their respective owners.
+            <br></br>
+            Made by 
+            <a href="https://vilkun.software" target="_blank" style={{
+                color: 'white'
+            }}> Vellkunio </a>
         </p>
 
                 

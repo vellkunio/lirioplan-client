@@ -164,7 +164,7 @@ class Project extends Component {
             project: {
                 projectId, bossCompany, address, createdAt, isFinished, isFullyPaid, isStarted,
                 makeMoney, spendMoney, room, size, userHandle },
-            user: {authenticated, credentials: {handle, isAdmin}} 
+            user: {authenticated, credentials: {handle, userStatus}} 
         } = this.props;
         const { errors, loadingForEdit, loadingForDelete } = this.state;
 
@@ -396,12 +396,12 @@ return (
                         </DialogContentText>
                     </DialogContent>
                     <DialogActions>
-                        <Button  variant="outlined" disabled={!isAdmin} style={{color: 'red'}}
+                        <Button  variant="outlined" disabled={userStatus != 'admin'} style={{color: 'red'}}
                             onClick={this.handleDeleteProject}
                             // startIcon={<DeleteOutlineIcon />}
                             >
                                 <Typography>
-                                Delete
+                                    Delete
                                 </Typography>
                             </Button>
                         <Button variant="outlined" style={{color: 'black'}}

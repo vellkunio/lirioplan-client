@@ -6,7 +6,7 @@ const initialState = {
 }
 
 
-export default function ui(state = initialState, action) {
+function ui(state = initialState, action) {
     switch (action.type) {
         case SET_ERRORS:
             return { 
@@ -31,6 +31,7 @@ export default function ui(state = initialState, action) {
     }
 }
 
+export default ui
 
 
 

@@ -5,6 +5,7 @@ class finance extends Component {
         return (
             <div>
                 <h1>Finance page</h1>
+                <h2>In developing</h2>
             </div>
         )
     }

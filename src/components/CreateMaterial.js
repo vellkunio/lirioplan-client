@@ -121,7 +121,7 @@ export class CreateMaterial extends Component {
     render() {
 
         const {
-            user: { credentials: {isAdmin}}
+            user: { credentials: {userStatus}}
         } = this.props;
 
         return (
@@ -323,7 +323,7 @@ export class CreateMaterial extends Component {
             variant="outlined" 
             color="success" 
             style={{marginTop: "25px"}}
-            disabled={this.state.loading || !isAdmin}
+            disabled={this.state.loading || userStatus !='admin'}
             >
             <Typography variant="subtitle2">Done</Typography>
             </Button>

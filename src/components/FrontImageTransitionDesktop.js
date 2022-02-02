@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useTransition, animated, config } from '@react-spring/web'
 import styles from './styles.module.css'
+import { Link } from 'react-router-dom';
 
 import AOS from 'aos';
 
@@ -16,6 +17,8 @@ import bracketTopBlack from '../images/bracketTopBlack.png';
 import bracketBtmBlack from '../images/bracketBtmBlack.png';
 
 import Button from '@mui/material/Button';
+import HomeIcon from '@material-ui/icons/Home';
+import MyButton from '../util/MyButton';
 
 
 const slides = [
@@ -25,14 +28,6 @@ const slides = [
   desktopMain4,
   desktopMain5
 ]
-
-
-// const slides = [
-//   'photo-1544511916-0148ccdeb877?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1901&q=80i',
-//   'photo-1544572571-ab94fd872ce4',
-//   'reserve/bnW1TuTV2YGcoh1HyWNQ_IMG_0207.JPG',
-//   'photo-1540206395-68808572332f',
-// ]
 
 export default function App() {
   const [index, set] = useState(0)
@@ -62,6 +57,13 @@ export default function App() {
           }}
         />
       ))}
+
+          <Link to="/finance">
+          <MyButton tip="Admin" >
+              <HomeIcon fontSize="large" style={{opacity: '20%'}}/>
+          </MyButton>
+          </Link>
+
         <div style={{position: 'absolute', alignItems: 'center', left: 0, right: 0}}>
           {index=== 1 || index === 3 || index === 2 || index === 5 || index === 0  ? 
             <img src={bracketTopBlack} alt="bracket"
@@ -76,7 +78,7 @@ export default function App() {
             />}
 
         
-          <h1 className="font-belleza" 
+          <h1 className="font-belleza" data-aos="fade-down" data-aos-duration="1500"
           style={{fontSize: "70px", display: 'block', textAlign: 'center',
             letterSpacing: '6px', color: (index === 1 || index === 3 || index === 2 || index === 5 || index === 0) ? 'black' : 'white',
             fontWeight: '300'
@@ -84,7 +86,7 @@ export default function App() {
               LIRIOPLAN
           </h1>
 
-          <h1 className="font-belleza" 
+          <h1 className="font-belleza" data-aos="fade-up" data-aos-duration="1500"
           style={{fontSize: "45px", display: 'block', textAlign: 'center',
             letterSpacing: '6px', color: (index === 1 || index === 3 || index === 2 || index === 5 || index === 0) ? 'black' : 'white',
             fontWeight: '300'

@@ -25,6 +25,9 @@ import { withStyles } from '@mui/material';
 import axios from 'axios';
 import MyButton from '../util/MyButton';
 
+
+import { connect } from 'react-redux';
+
 function createData(materialExactName, quantity, length, width, heigth, price, 
   sqftPerBox, quantityInBox, sqftPerTile, manufacturer, uniqueCode, userHandle, createdAt, materialId ) {
 return {
@@ -310,7 +313,10 @@ const EnhancedTableToolbar = (props) => {
         //     <DeleteIcon />
         //   </IconButton>
         // </Tooltip>
-        <MyButton tip="Delete" onClick={deleteRows(props.rowsArray)}>
+        <MyButton 
+        tip="Delete" 
+        // disabled={true}
+        onClick={deleteRows(props.rowsArray)}>
           <DeleteIcon />
         </MyButton>
       ) : (
@@ -339,8 +345,12 @@ EnhancedTableToolbar.propTypes = {
 
 
 // export default connect(mapStateToProps)(withStyles(styles)(Project));
-export default function EnhancedTable(props) {
-  // console.log(props.materials);
+// export default function EnhancedTable(props) {
+function EnhancedTable(props, user) {
+  // const {
+  //   user: { credentials: {userStatus} }
+  // } = props;
+  console.log(user.userStatus);
   populateRowsArray(props.materials);
   const [order, setOrder] = React.useState('asc');
   const [orderBy, setOrderBy] = React.useState('calories');
@@ -463,7 +473,7 @@ export default function EnhancedTable(props) {
                       <TableCell align="right">{row.length}</TableCell>
                       <TableCell align="right">{row.width}</TableCell>
                       <TableCell align="right">{row.heigth}</TableCell>
-                      <TableCell align="right">{row.price}</TableCell>
+                      <TableCell align="right">{row.price}$</TableCell>
                       <TableCell align="right">{row.sqftPerBox}</TableCell>
                       <TableCell align="right">{row.quantityInBox}</TableCell>
                       <TableCell align="right">{row.sqftPerTile}</TableCell>
@@ -507,3 +517,9 @@ export default function EnhancedTable(props) {
   );
 }
 
+const mapStateToProps = (state) => ({
+  user: state.user
+});
+
+
+export default connect(mapStateToProps)(EnhancedTable);

@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { useTransition, animated, config } from '@react-spring/web'
 import styles from './styles.module.css'
+import { Link } from 'react-router-dom';
+
+import AOS from 'aos';
 
 import FrontPic1 from '../images/FrontPicture1.png';
 import FrontPic2 from '../images/FrontPicture2.png';
@@ -14,6 +17,8 @@ import bracketTopBlack from '../images/bracketTopBlack.png';
 import bracketBtmBlack from '../images/bracketBtmBlack.png';
 
 import Button from '@mui/material/Button';
+import HomeIcon from '@material-ui/icons/Home';
+import MyButton from '../util/MyButton';
 
 
 const slides = [
@@ -42,6 +47,8 @@ export default function App() {
     config: { duration: 1000 },
   })
   useEffect(() => {
+    AOS.init();
+    AOS.refresh();
     const t = setInterval(() => set(state => (state + 1) % slides.length), 7000)
     return () => clearTimeout(t)
   }, [])
@@ -58,6 +65,14 @@ export default function App() {
           }}
         />
       ))}
+
+          <Link to="/finance">
+          <MyButton tip="Admin" >
+              <HomeIcon fontSize="large" style={{opacity: '20%', position: 'absolute', right: '0px', 
+                                          left: '10px', top: '5px'}}/>
+          </MyButton>
+          </Link>
+
         <div style={{position: 'absolute', alignItems: 'center', left: 0, right: 0}}>
           {index=== 1 || index === 3 ? 
             <img src={bracketTopBlack} alt="bracket"
@@ -72,7 +87,7 @@ export default function App() {
             />}
 
         
-          <h1 className="font-belleza" 
+          <h1 className="font-belleza" data-aos="fade-down" data-aos-duration="1500"
           style={{fontSize: "44px", display: 'block', textAlign: 'center',
             letterSpacing: '6px', color: (index === 1 || index === 3) ? 'black' : 'white',
             fontWeight: '300'
@@ -80,7 +95,7 @@ export default function App() {
               LIRIOPLAN
           </h1>
 
-          <h1 className="font-belleza" 
+          <h1 className="font-belleza" data-aos="fade-up" data-aos-duration="1500"
           style={{fontSize: "30px", display: 'block', textAlign: 'center',
             letterSpacing: '6px', color: (index === 1 || index === 3) ? 'black' : 'white',
             fontWeight: '300'
@@ -104,7 +119,7 @@ export default function App() {
 
 
 
-          <div className="font-merriweather" 
+          <div className="font-merriweather" data-aos="fade-up" data-aos-duration="1500"
           style={{fontSize: "16px", display: 'block', textAlign: 'right',
             letterSpacing: '4px', color: (index === 1 || index === 3) ? 'black' : 'white',
             fontWeight: 300, fontStyle: 'italic', paddingTop: '96px', lineHeight: '150%',
