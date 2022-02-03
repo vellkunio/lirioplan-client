@@ -12,7 +12,7 @@
 
 <!--- ![Mac3](https://user-images.githubusercontent.com/35813564/152263286-dd8c7406-19c8-48de-bd20-d819d2ee76bf.png) --->
 
-### Desktiption
+### Description
 This project is being actively developed for Tile-Installation company working in Ontario. 
 The main goal for this website is to create a beautiful custom design that clients see and backend for the owner and employees where they can keep truck of current projects, materials and finances.
 <br>
