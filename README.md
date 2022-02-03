@@ -1,70 +1,82 @@
-# Getting Started with Create React App
+# Lirioplan Inc.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<!--- ![Iphone1](https://user-images.githubusercontent.com/35813564/152261378-25f2cc4f-239e-481d-b5f3-3020832a88fe.png) --->
 
-## Available Scripts
+<!--- ![Iphone2](https://user-images.githubusercontent.com/35813564/152261394-ca439694-8582-4943-a4f6-2f1c6c868100.png) --->
 
-In the project directory, you can run:
+<!--- ![Iphone3](https://user-images.githubusercontent.com/35813564/152261403-61915a61-24be-42e9-aa82-c52429677be1.png) --->
 
-### `yarn start`
+<!--- ![Mac1](https://user-images.githubusercontent.com/35813564/152263247-10056f64-2029-43c1-861e-770e819dfc9e.png) --->
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<!--- ![Mac2](https://user-images.githubusercontent.com/35813564/152263275-11722e38-73a1-417b-8c22-5339ca80ee56.png) --->
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+<!--- ![Mac3](https://user-images.githubusercontent.com/35813564/152263286-dd8c7406-19c8-48de-bd20-d819d2ee76bf.png) --->
 
-### `yarn test`
+### Desktiption
+This project is being actively developed for Tile-Installation company working in Ontario. 
+The main goal for this website is to create a beautiful custom design that clients see and backend for the owner and employees where they can keep truck of current projects, materials and finances.
+<br>
+<br>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### To see live website [Lirioplan Inc](https://lirioplan-3eda4.web.app/)
+#### Instuction for back-end:
+* Click Home icon in top-left corner of the page (barely visible)
+* Create your account with fake data and Code: <b>1111</b> 
+* Or login with Login: <b>testUser1@gmail.com</b> and Password: <b>123123</b>
+* You are able to see all functions in <b>View only mode</b> and can't change anything
 
-### `yarn build`
+<br>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Main features of this project
+* Responsive design
+* Features depending on device
+* Many animations
+* High-Quality photos
+* Unique design
+* Custom API
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<br>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Examples
 
-### `yarn eject`
+<br>
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+<h4 align="center">Front page</h4>
+  
+<p align="center"><img src="https://user-images.githubusercontent.com/35813564/152267137-0e23a791-113f-4e79-9ab0-32a8668e877c.png"></p>
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<br>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+<h4 align="center">Signup or login</h4>
+  
+<p align="center"><img src="https://user-images.githubusercontent.com/35813564/152267491-8dc8ba5a-92e0-4a3a-b810-028e543445ad.png"></p>
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+<br>
 
-## Learn More
+<h4 align="center">Add/Edit/Remove projects and materials</h4>
+  
+<p align="center"><img src="https://user-images.githubusercontent.com/35813564/152267533-94a675ae-6bf3-4f20-b523-bab8adf21e6a.png"></p>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+<br>
+<br>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+| Mobile device main page | Features depending on device | Responsive design | 
+| ------------- | ------------- | ------------- |
+| <p align="center"><img src="https://user-images.githubusercontent.com/35813564/152261378-25f2cc4f-239e-481d-b5f3-3020832a88fe.png" height="578px" width="294px"></p>  | <p align="center"><img src="https://user-images.githubusercontent.com/35813564/152261394-ca439694-8582-4943-a4f6-2f1c6c868100.png" height="578px" width="294px"></p>  | <p align="center"><img src="https://user-images.githubusercontent.com/35813564/152261403-61915a61-24be-42e9-aa82-c52429677be1.png" height="578px" width="294px"></p> |
+| <p align="center">Custom design, images and animations for mobile version</p>  | <p align="center"><b>Make a call</b> from mobile devices and <b>send email</b> from laptop</p>  | <p align="center">All possible screen sizes to make it accessible from anywhere</p> |
 
-### Analyzing the Bundle Size
+<br>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Technologies used
 
-### Making a Progressive Web App
+* [React](https://reactjs.org/)
+* [Material-UI](https://mui.com/)
+* [AOS Animations](http://michalsnik.github.io/aos/)
+* [React-Spring](https://react-spring.io/)
+* [Redux](https://redux.js.org/)
+* [Firebase](https://firebase.google.com/)
+* [Express](https://expressjs.com/)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
