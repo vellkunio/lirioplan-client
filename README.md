@@ -64,7 +64,7 @@ The main goal for this website is to create a beautiful custom design that clien
 
 | Mobile device main page | Features depending on device | Responsive design | 
 | ------------- | ------------- | ------------- |
-| <p align="center"><img src="https://user-images.githubusercontent.com/35813564/152261378-25f2cc4f-239e-481d-b5f3-3020832a88fe.png" width="250px"></p>  | <p align="center"><img src="https://user-images.githubusercontent.com/35813564/152261394-ca439694-8582-4943-a4f6-2f1c6c868100.png" width="250px"></p>  | <p align="center"><img src="https://user-images.githubusercontent.com/35813564/152261403-61915a61-24be-42e9-aa82-c52429677be1.png" width="250px"></p> |
+| <p align="center"><img src="https://user-images.githubusercontent.com/35813564/152261378-25f2cc4f-239e-481d-b5f3-3020832a88fe.png" width="250px" height="500px"></p>  | <p align="center"><img src="https://user-images.githubusercontent.com/35813564/152261394-ca439694-8582-4943-a4f6-2f1c6c868100.png" width="250px" height="500px"></p>  | <p align="center"><img src="https://user-images.githubusercontent.com/35813564/152261403-61915a61-24be-42e9-aa82-c52429677be1.png" width="250px" height="500px"></p> |
 | <p align="center">Custom design, images and animations for mobile version</p>  | <p align="center"><b>Make a call</b> from mobile devices and <b>send email</b> from laptop</p>  | <p align="center">All possible screen sizes to make it accessible from anywhere</p> |
 
 <br>
