@@ -25,8 +25,6 @@ The main goal for this website is to create a beautiful custom design that clien
 * Or login with Login: <b>testUser1@gmail.com</b> and Password: <b>123123</b>
 * You are able to see all functions in <b>View only mode</b> and can't change anything
 
-<br>
-
 ### Main features of this project
 * Responsive design
 * Features depending on device
@@ -34,8 +32,6 @@ The main goal for this website is to create a beautiful custom design that clien
 * High-Quality photos
 * Unique design
 * Custom API
-
-<br>
 
 ### Examples
 
