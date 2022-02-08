@@ -7,6 +7,17 @@ underlayment cement 1 bag = 50sqft (top and under) FLOOR ONLY
 0.5inch tile = 50sqft/1bag
 0.25 = 100sqft/1bag
 
+0.01inch = 4sqft/1bag
+
+0.01inch = 400sqft/1bag
+1inch = 25 sqft/bag
+
+25/thickness = size of sqft it can cover per bag
+
+amount of bags = sizeOFSurface / (25/thickness)
+
+------------------
+
 Waterproof = 1 gallon = 100sqft
 
 no tiles
@@ -17,3 +28,74 @@ how much spent on people
 how much they owe me
 how many projects pinished
 extra
+
+
+Option 1:
+
+Create list of all material possible
+	- if have in stock - number, if emply in stock - 0
+	- Will have a unique number
+When create a project will use dropdown for all materials needed
+	- Devide this number from materials
+	- If negavite = TO BUY
+	- If positive = good
+
+
+
+Option 2:
+
+If project will have an open tab materials with list of needed materials and prices
+
+Summarize all prices + for job and calculate total price
+	-Total price - materials = clean income
+
+Calculate all math for needed cement and waterproof and add to materials tab
+
+
+Option 3: 
+
+When create a project will add materials needed with autofill from existing materials in DB for easier type
+Materials connect to materials DB to display needed materials in Materials section
+1) He has to add materials with all details
+2) Pick this material from dropdown when create a project
+3) In project see list of materials needed with prices
+
+
+Rules: 
+	If this material is not needed in any projects => Display q-ty of 0 => 
+	=> Otherwise show amount of total needed this material in all projects
+
+Math:
+
+When create a project will have 2 fields
+	
+	If shower field => ask for thickness of tile => calculate waterproof and cement
+	If floor field => ask for thickness of tile => Calculate underlayment cement and cement
+	If walls field => calculate cement
+	
+
+
+Finance:
+
+Add gross income => All total money for finished project
+Clean income => Add money after project checkmark is on 'IsFullyPaid'
+Expenses => All costs of materials
+Amount of active projects => Project with checkmark off 'IsFinished'
+Amount to Finished Projects => Projects with checkmark on 'finished'
+Top 3 company that has most installed projects (Millsone, Private jobs, other)
+Custom add income field
+Custom Expences field
+
+0) ClientSide
+1) Array of materials must stay in redux store
+2) Aceess that array in create Project & createMaterial (to avoid ducpicates)
+3) Add open section to add materials to the project
+4) Add fields with autofill from array
+5) Add a button to Add more
+
+6.0) Functions
+6.1) Post materials from inputs as array and in Funcs take each element and add to material q-ty
+7) Get materials from DB to show in projects where material.projectId = project.projectId
+
+8.0) Client
+8.1) 
