@@ -29,6 +29,8 @@ import { logoutUser, getUserData } from './redux/actions/userActions';
 
 const theme = createTheme(themeFile);
 
+axios.defaults.baseURL = 'https://us-central1-lirioplanapp.cloudfunctions.net/api';
+
 const token = localStorage.FBIdToken;
   if(token){
     const decodedToken = jwtDecode(token);
