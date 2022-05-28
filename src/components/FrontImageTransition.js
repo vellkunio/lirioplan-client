@@ -137,7 +137,7 @@ export default function App() {
           }}
           sx={{display:'flex', justifyContent: 'flex-end'}}
           onClick={() => {
-              window.location.href = 'tel:+12262241256';
+              window.location.href = 'tel:+15196359053';
           }}
           >
               Contact us

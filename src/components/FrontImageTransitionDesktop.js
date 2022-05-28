@@ -128,7 +128,7 @@ export default function App() {
           }}
           sx={{display:'flex', justifyContent: 'flex-end'}}
           onClick={() => {
-              window.location.href = 'mailto:vellkunio@gmail.com';
+              window.location.href = 'mailto:lirioplan@gmail.com';
           }}
           >
               Contact us

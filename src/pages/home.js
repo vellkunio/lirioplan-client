@@ -133,7 +133,7 @@ class home extends Component {
         const windowWidth=window.screen.availWidth;
         const isMac = navigator.platform === 'MacIntel' ? true : false;
 
-        let isMobile = false;
+        let isMobile = true;
         let isDesktop = false;
         let isTablet = false;
 
@@ -230,7 +230,7 @@ class home extends Component {
                 }}
                 sx={{display:'flex', justifyContent: 'flex-end'}}
                 onClick={() => {
-                    window.location.href = 'tel:+12262241256';
+                    window.location.href = 'tel:+15196359053';
                 }}
                 >
                     Contact us
@@ -813,7 +813,7 @@ class home extends Component {
             letterSpacing: '0.1em', lineHeight: '160%'
             }}
             onClick={() => {
-                window.location.href = 'tel:+12262241256';
+                window.location.href = 'tel:+15196359053';
             }}
             >
                 GET a free estimate
@@ -1197,7 +1197,7 @@ class home extends Component {
             letterSpacing: '0.1em', lineHeight: '160%'
             }}
             onClick={() => {
-                window.location.href = 'tel:+12262241256';
+                window.location.href = 'tel:+15196359053';
             }}
             >
                 Book installation
